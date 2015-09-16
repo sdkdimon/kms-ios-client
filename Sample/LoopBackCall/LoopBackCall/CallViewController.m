@@ -161,6 +161,8 @@
     
     RTCVideoTrack *remoteVideoTrack = [[_remoteMediaStream videoTracks] firstObject];
     [remoteVideoTrack removeRenderer:_remoteVideoView];
+    _remoteMediaStream = nil;
+    _localMediaStream = nil;
     
     
     [super removeFromParentViewController];

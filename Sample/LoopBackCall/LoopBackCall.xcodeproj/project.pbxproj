@@ -10,7 +10,7 @@
 		8A04F4641B9065F0000344ED /* CallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A04F4631B9065F0000344ED /* CallView.m */; };
 		8A8E02E41B8F11740086FBF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E02E31B8F11740086FBF9 /* main.m */; };
 		8A8E02EF1B8F11740086FBF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E02EE1B8F11740086FBF9 /* Images.xcassets */; };
-		8ABDA35D1BA6BB38008154CD /* KMSAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDA32D1BA6BB38008154CD /* KMSAPIService.m */; };
+		8ABDA35D1BA6BB38008154CD /* KMSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDA32D1BA6BB38008154CD /* KMSSession.m */; };
 		8ABDA35E1BA6BB38008154CD /* KMSMediaPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDA32F1BA6BB38008154CD /* KMSMediaPipeline.m */; };
 		8ABDA35F1BA6BB38008154CD /* KMSWebRTCEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDA3311BA6BB38008154CD /* KMSWebRTCEndpoint.m */; };
 		8ABDA3601BA6BB38008154CD /* KMSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDA3341BA6BB38008154CD /* KMSLog.m */; };
@@ -45,8 +45,8 @@
 		8A8E02E21B8F11740086FBF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A8E02E31B8F11740086FBF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A8E02EE1B8F11740086FBF9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8ABDA32C1BA6BB38008154CD /* KMSAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSAPIService.h; sourceTree = "<group>"; };
-		8ABDA32D1BA6BB38008154CD /* KMSAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSAPIService.m; sourceTree = "<group>"; };
+		8ABDA32C1BA6BB38008154CD /* KMSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSSession.h; sourceTree = "<group>"; };
+		8ABDA32D1BA6BB38008154CD /* KMSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSSession.m; sourceTree = "<group>"; };
 		8ABDA32E1BA6BB38008154CD /* KMSMediaPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaPipeline.h; sourceTree = "<group>"; };
 		8ABDA32F1BA6BB38008154CD /* KMSMediaPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMediaPipeline.m; sourceTree = "<group>"; };
 		8ABDA3301BA6BB38008154CD /* KMSWebRTCEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSWebRTCEndpoint.h; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 		8ABDA32B1BA6BB38008154CD /* KMSClient */ = {
 			isa = PBXGroup;
 			children = (
-				8ABDA32C1BA6BB38008154CD /* KMSAPIService.h */,
-				8ABDA32D1BA6BB38008154CD /* KMSAPIService.m */,
+				8ABDA32C1BA6BB38008154CD /* KMSSession.h */,
+				8ABDA32D1BA6BB38008154CD /* KMSSession.m */,
 				8ABDA32E1BA6BB38008154CD /* KMSMediaPipeline.h */,
 				8ABDA32F1BA6BB38008154CD /* KMSMediaPipeline.m */,
 				8ABDA3301BA6BB38008154CD /* KMSWebRTCEndpoint.h */,
@@ -419,7 +419,7 @@
 				8ABDA3631BA6BB38008154CD /* KMSRequestMessageFactory.m in Sources */,
 				8ABDA35E1BA6BB38008154CD /* KMSMediaPipeline.m in Sources */,
 				8AD5B53F1B8F1286003D8627 /* RootViewController.m in Sources */,
-				8ABDA35D1BA6BB38008154CD /* KMSAPIService.m in Sources */,
+				8ABDA35D1BA6BB38008154CD /* KMSSession.m in Sources */,
 				8ABDA36C1BA6BB38008154CD /* KMSRequestMessage.m in Sources */,
 				8ABDA3681BA6BB38008154CD /* KMSICECandidate.m in Sources */,
 				8ABDA3611BA6BB38008154CD /* KMSMessageFactoryMediaPipeline.m in Sources */,

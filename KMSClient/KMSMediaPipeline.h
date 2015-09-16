@@ -30,7 +30,7 @@
 -(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryMediaPipeline *)messageFactory identifier:(NSString *)identifier;
 
 +(instancetype)pipelineWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryMediaPipeline *)messageFactory;
--(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryMediaPipeline *)messageFactory;;
+-(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryMediaPipeline *)messageFactory;∂
 
 @property(strong,nonatomic,readonly) NSString *identifier;
 @property(strong,nonatomic,readonly) KMSSession *kurentoSession;
