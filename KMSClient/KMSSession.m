@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "KMSAPIService.h"
+#import "KMSSession.h"
 #import "RACSRWebSocket.h"
 #import "KMSResponseMessage.h"
 #import "KMSRequestMessage.h"
@@ -73,19 +73,35 @@
 
 @end
 
-@interface KMSAPIService ()
+@interface KMSSession ()
 @property(strong,nonatomic,readwrite) NSString *sessionId;
+@property(assign,nonatomic,readwrite) KMSSessionState state;
+@property(strong,nonatomic,readwrite) RACCompoundDisposable *subscriptionDisposables;
 @end
 
-@implementation KMSAPIService
+@implementation KMSSession
 
-+(instancetype)serviceWithWebSocketClient:(RACSRWebSocket *)wsClient{
++(instancetype)sessionWithWebSocketClient:(RACSRWebSocket *)wsClient{
     return [[self alloc] initWithWebSocketClient:wsClient];
 }
 
 -(instancetype)initWithWebSocketClient:(RACSRWebSocket *)wsClient{
     if((self = [super init]) != nil){
         _wsClient = wsClient;
+        _state = KMSSessionStateConnecting;
+        _subscriptionDisposables = [RACCompoundDisposable compoundDisposable];
+        @weakify(self);
+        [_subscriptionDisposables addDisposable:
+        [[_wsClient webSocketDidCloseSignal] subscribeNext:^(id x) {
+            @strongify(self);
+            [self setState:KMSSessionStateClosed];
+        }]];
+        
+        [_subscriptionDisposables addDisposable:
+        [[_wsClient webSocketDidOpenSignal] subscribeNext:^(id x) {
+            @strongify(self);
+            [self setState:KMSSessionStateOpen];
+        }]];
         
         [_wsClient setRequestMessageTransformer:[[WebSocketRequestJSONTransformer alloc] init]];
         [_wsClient setResponseMessageTransformer:[[WebSocketResponseJSONTransformer alloc] init]];
@@ -126,16 +142,23 @@
             }
         }];
         
-        RACDisposable *wsErrorSignalDisposable = [wsErrorSignal subscribeNext:^(id x) {
-            [subscriber sendError:nil];
-         
-        }];
+        RACDisposable *wsErrorSignalDisposable = [wsErrorSignal subscribeNext:^(RACTuple *args) {
+            [subscriber sendError:[args second]];
+         }];
         [[[self wsClient] sendDataCommand] execute:requestMessage];
         return [RACCompoundDisposable compoundDisposableWithDisposables:@[wsMessageSignalDisposable,wsErrorSignalDisposable]];
     }];
     
     return sendMessageSignal;
     
+}
+
+-(RACSignal *)close{
+    return [[self wsClient] closeConnection];
+}
+
+-(void)dealloc{
+    [[self subscriptionDisposables] dispose];
 }
 
 @end

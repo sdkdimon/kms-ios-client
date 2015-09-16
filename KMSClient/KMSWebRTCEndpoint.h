@@ -24,19 +24,19 @@
 #import "KMSEventType.h"
 
 @class RACSignal;
-@class KMSAPIService;
+@class KMSSession;
 @class KMSICECandidate;
 @class KMSMessageFactoryWebRTCEndpoint;
 
 @interface KMSWebRTCEndpoint : NSObject <KMSMessageFactoryDataSource>
 
-+(instancetype)endpointWithAPIService:(KMSAPIService *)apiService messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
--(instancetype)initWithAPIService:(KMSAPIService *)apiService messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
++(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
+-(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
 
-+(instancetype)endpointWithAPIService:(KMSAPIService *)apiService messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
--(instancetype)initWithAPIService:(KMSAPIService *)apiService messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
++(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
+-(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
 
-@property(strong,nonatomic,readonly) KMSAPIService *apiService;
+@property(strong,nonatomic,readonly) KMSSession *kurentoSession;
 @property(strong,nonatomic,readonly) KMSMessageFactoryWebRTCEndpoint *messageFactory;
 @property(strong,nonatomic,readonly) RACSignal *eventSignal;
 
