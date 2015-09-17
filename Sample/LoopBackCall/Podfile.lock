@@ -6,7 +6,7 @@ PODS:
   - MTLJSONAdapterWithoutNil (1.0):
     - Mantle (= 2.0)
   - NSDictionaryMerge (1.0)
-  - RACSRWebSocket (1.1.1):
+  - RACSRWebSocket (1.1.2):
     - ReactiveCocoa (= 2.5)
     - SocketRocket (= 0.4)
   - ReactiveCocoa (2.5):
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - libjingle_peerconnection
   - MTLJSONAdapterWithoutNil (= 1.0)
   - NSDictionaryMerge (= 1.0)
-  - RACSRWebSocket (= 1.1.1)
+  - RACSRWebSocket (= 1.1.2)
   - ReactiveCocoa (= 2.5)
 
 SPEC CHECKSUMS:
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   Mantle: d7c75b6fb789b20f7ae30cd0d09435fe545896ff
   MTLJSONAdapterWithoutNil: f17d2a089628ab4da5158bf11f13a9e4bc5f4709
   NSDictionaryMerge: 27071382a60ebf258eaed63f17430a51fb4c0c00
-  RACSRWebSocket: 4aa3d733af22c8db6f37a0ba5e1c1a8993206a4d
+  RACSRWebSocket: d4ef8d96d5c93754d9fda213215d79aea212c8c5
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
 

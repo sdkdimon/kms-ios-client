@@ -29,14 +29,14 @@
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ReactiveCocoa/RACSubject.h>
 #import <ReactiveCocoa/RACCompoundDisposable.h>
+#import <ReactiveCocoa/RACCommand.h>
 #import "KMSLog.h"
 
 
-@interface KMSSession ()
+@interface KMSSession () <RACSRWebSocketMessageTransformer>
 @property(strong,nonatomic,readwrite) NSString *sessionId;
 @property(assign,nonatomic,readwrite) KMSSessionState state;
 @property(strong,nonatomic,readwrite) RACCompoundDisposable *subscriptionDisposables;
-@property(strong,nonatomic,readwrite) RACSignal *webSocketDidReceiveMessageSignal;
 @end
 
 @implementation KMSSession
@@ -63,20 +63,16 @@
             [self setState:KMSSessionStateOpen];
         }]];
         
-        _webSocketDidReceiveMessageSignal =
-        [[wsClient webSocketDidReceiveMessageSignal] map:^id(RACTuple *args) {
-            NSString *jsonString = [args second];
-            NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-            KMSLog(KMSLogMessageLevelVerbose,@"Kurento API client did receive message \n%@",jsonObject);
-            return [MTLJSONAdapterWithoutNil modelOfClass:[KMSMessage class] fromJSONDictionary:jsonObject error:nil];
-        }];
-        
         _eventSignal =
-        [[_webSocketDidReceiveMessageSignal filter:^BOOL(KMSMessage *message) {
+        [[[wsClient webSocketDidReceiveMessageSignal] filter:^BOOL(RACTuple *args) {
+            KMSMessage *message = [args second];
             return [message identifier] == nil;
-        }] map:^id(KMSRequestMessageEvent *message) {
+        }] map:^id(RACTuple *args) {
+            KMSRequestMessageEvent *message = [args second];
             return [[message params] value];
         }];
+        
+        [wsClient setMessageTransformer:self];
     }
     return self;
 }
@@ -86,13 +82,17 @@
     RACSignal *sendMessageSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         RACSignal *wsMessageSignal =
-        [[self webSocketDidReceiveMessageSignal] filter:^BOOL(KMSMessage *message) {
+        [[[self wsClient] webSocketDidReceiveMessageSignal] filter:^BOOL(RACTuple *args) {
+            KMSMessage *message = [args second];
             NSString *messageId = [message identifier];
             return (messageId != nil && [messageId isEqualToString:[requestMessage identifier]]);
         }];
         
         RACSignal *wsErrorSignal = [[self wsClient] webSocketDidFailSignal];
-        RACDisposable *wsMessageSignalDisposable = [wsMessageSignal subscribeNext:^(KMSResponseMessage *responseMessage) {
+        
+        RACDisposable *wsMessageSignalDisposable =
+        [wsMessageSignal subscribeNext:^(RACTuple *args) {
+            KMSResponseMessage *responseMessage = [args second];
             NSError *responseError = [responseMessage error];
             if(responseError == nil){
                 KMSResponseMessageResult *responseMessageResult = [responseMessage result];
@@ -104,13 +104,13 @@
             }
         }];
         
-        RACDisposable *wsErrorSignalDisposable = [wsErrorSignal subscribeNext:^(RACTuple *args) {
+        RACDisposable *wsErrorSignalDisposable =
+        [wsErrorSignal subscribeNext:^(RACTuple *args) {
             [subscriber sendError:[args second]];
          }];
-        NSDictionary *jsonObject = [MTLJSONAdapterWithoutNil JSONDictionaryFromModel:requestMessage error:nil];
-        KMSLog(KMSLogMessageLevelVerbose,@"Kurento API client will send message \n%@",jsonObject);
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject options:0 error:nil];
-        [[[self wsClient] sendDataCommand] execute:jsonData];
+    
+        [[[self wsClient] sendDataCommand] execute:requestMessage];
+        
         return [RACCompoundDisposable compoundDisposableWithDisposables:@[wsMessageSignalDisposable,wsErrorSignalDisposable]];
     }];
     
@@ -125,5 +125,21 @@
 -(void)dealloc{
     [[self subscriptionDisposables] dispose];
 }
+
+#pragma mark RACSRWebSocketMessageTransformer
+
+-(id)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(KMSRequestMessage *)message{
+    NSDictionary *jsonObject = [MTLJSONAdapterWithoutNil JSONDictionaryFromModel:message error:nil];
+    KMSLog(KMSLogMessageLevelVerbose,@"Kurento API client will send message \n%@",jsonObject);
+    return [NSJSONSerialization dataWithJSONObject:jsonObject options:0 error:nil];
+}
+
+-(id)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(NSString *)message{
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    KMSLog(KMSLogMessageLevelVerbose,@"Kurento API client did receive message \n%@",jsonObject);
+    return [MTLJSONAdapterWithoutNil modelOfClass:[KMSMessage class] fromJSONDictionary:jsonObject error:nil];
+}
+
+
 
 @end

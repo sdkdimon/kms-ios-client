@@ -21,8 +21,18 @@
 
 
 #import <SocketRocket/SRWebSocket.h>
-#import <ReactiveCocoa/RACSignal.h>
-#import <ReactiveCocoa/RACCommand.h>
+@class RACSignal;
+@class RACCommand;
+@class RACSRWebSocket;
+
+
+@protocol RACSRWebSocketMessageTransformer <NSObject>
+
+-(id)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message;
+-(id)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(id)message;
+
+@end
+
 
 @interface RACSRWebSocket : SRWebSocket
 
@@ -31,6 +41,8 @@
 @property(weak,nonatomic,readonly) RACSignal *webSocketDidFailSignal;
 @property(weak,nonatomic,readonly) RACSignal *webSocketDidCloseSignal;
 @property(weak,nonatomic,readonly) RACSignal *webSocketDidReceivePongSignal;
+
+@property(weak,nonatomic,readwrite) id <RACSRWebSocketMessageTransformer> messageTransformer;
 
 @property(strong,nonatomic,readonly) RACCommand *sendDataCommand;
 

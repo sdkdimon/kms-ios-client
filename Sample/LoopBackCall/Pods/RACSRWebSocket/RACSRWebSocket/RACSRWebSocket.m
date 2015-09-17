@@ -20,6 +20,8 @@
 // THE SOFTWARE.
 
 #import "RACSRWebSocket.h"
+#import <ReactiveCocoa/RACSignal.h>
+#import <ReactiveCocoa/RACCommand.h>
 #import <ReactiveCocoa/RACSubject.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ReactiveCocoa/RACCompoundDisposable.h>
@@ -149,9 +151,21 @@
     }
 }
 
+
+-(void)send:(id)data{
+    if(_messageTransformer && [_messageTransformer respondsToSelector:@selector(websocket:transformRequestMessage:)]){
+        data = [_messageTransformer websocket:self transformRequestMessage:data];
+    }
+    [super send:data];
+}
+
+
 #pragma mark - SRWebSocketDelegate
 
 -(void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
+    if(_messageTransformer && [_messageTransformer respondsToSelector:@selector(websocket:transformResponseMessage:)]){
+        message = [_messageTransformer websocket:self transformResponseMessage:message];
+    }
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,message,nil];
     [_webSocketDidReceiveMessageSubject sendNext:args];
 }
