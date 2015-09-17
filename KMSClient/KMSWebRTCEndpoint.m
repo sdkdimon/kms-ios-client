@@ -46,8 +46,8 @@
     return [[self alloc] initWithKurentoSession:kurentoSession messageFactory:messageFactory identifier:identifier];
 }
 
-+(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory{
-    return [[self alloc] initWithKurentoSession:kurentoSession messageFactory:messageFactory];
++(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory mediaPipelineId:(NSString *)mediaPipelineId;{
+    return [[self alloc] initWithKurentoSession:kurentoSession messageFactory:messageFactory mediaPipelineId:mediaPipelineId];
 }
 
 -(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier{
@@ -55,28 +55,39 @@
          _kurentoSession = kurentoSession;
          _messageFactory = messageFactory;
          _identifier = identifier;
-         _mediaPipelineId = identifier == nil ? nil : [[identifier pathComponents] firstObject];
-         @weakify(self);
-         _eventSignal = [[kurentoSession eventSignal] filter:^BOOL(KMSEvent *event) {
-             @strongify(self);
-             return [[event object] isEqualToString:[self identifier]];
-         }];
+         _mediaPipelineId = [[identifier pathComponents] firstObject];
+         [self initialize];
      }
     return self;
 }
 
--(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory{
-    return [self initWithKurentoSession:kurentoSession messageFactory:messageFactory identifier:nil];
+-(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory mediaPipelineId:(NSString *)mediaPipelineId;{
+    if((self = [super init]) != nil){
+        _kurentoSession = kurentoSession;
+        _messageFactory = messageFactory;
+        _identifier = nil;
+        _mediaPipelineId = mediaPipelineId;
+        [self initialize];
+    }
+    return self;
 
 }
 
 
--(RACSignal *)createWithMediaPipelineId:(NSString *)mediaPipelineId{
+-(void)initialize{
     @weakify(self);
-    return _identifier == nil ? [[_kurentoSession sendMessage:[_messageFactory createWithMediaPipeline:mediaPipelineId]] doNext:^(NSString *webRTCEndpointId) {
+    _eventSignal = [[_kurentoSession eventSignal] filter:^BOOL(KMSEvent *event) {
+        @strongify(self);
+        return [[event object] isEqualToString:[self identifier]];
+    }];
+}
+
+
+-(RACSignal *)create{
+    @weakify(self);
+    return _identifier == nil ? [[_kurentoSession sendMessage:[_messageFactory createWithMediaPipeline:_mediaPipelineId]] doNext:^(NSString *webRTCEndpointId) {
                                     @strongify(self);
                                     [self setIdentifier:webRTCEndpointId];
-                                    [self setMediaPipelineId:mediaPipelineId];
                                 }] : [RACSignal return:_identifier];
 }
 
@@ -85,7 +96,6 @@
     return _identifier != nil ? [[_kurentoSession sendMessage:[_messageFactory disposeObject:_identifier]] doCompleted:^{
         @strongify(self);
         [self setIdentifier:nil];
-        [self setMediaPipelineId:nil];
     }] : [RACSignal return:nil];
 }
 

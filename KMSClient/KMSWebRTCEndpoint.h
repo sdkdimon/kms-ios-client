@@ -30,8 +30,8 @@
 
 @interface KMSWebRTCEndpoint : NSObject <KMSMessageFactoryDataSource>
 
-+(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
--(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory;
++(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory mediaPipelineId:(NSString *)mediaPipelineId;
+-(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory mediaPipelineId:(NSString *)mediaPipelineId;
 
 +(instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
 -(instancetype)initWithKurentoSession:(KMSSession *)kurentoSession messageFactory:(KMSMessageFactoryWebRTCEndpoint *)messageFactory identifier:(NSString *)identifier;
@@ -43,7 +43,7 @@
 @property(strong,nonatomic,readonly) NSString *identifier;
 @property(strong,nonatomic,readonly) NSString *mediaPipelineId;
 
--(RACSignal *)createWithMediaPipelineId:(NSString *)mediaPipelineId;
+-(RACSignal *)create;
 -(RACSignal *)dispose;
 -(RACSignal *)connect:(NSString *)endpointId;
 -(RACSignal *)disconnect:(NSString *)endpointId;

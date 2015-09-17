@@ -81,6 +81,7 @@ enum{
 
 @property(strong,nonatomic,readwrite) KMSWebRTCEndpoint *webRTCEndpoint;
 @property(strong,nonatomic,readwrite) KMSMediaPipeline *mediaPipeline;
+@property(strong,nonatomic,readwrite) KMSSession *kurentoSession;
 
 @property (weak, nonatomic) IBOutlet UITextField *wsHostTextField;
 @property (weak, nonatomic) IBOutlet UITextField *wsPortTextField;
@@ -90,7 +91,7 @@ enum{
 @property (weak, nonatomic) IBOutlet UIButton *makeCallButton;
 
 @property(strong,nonatomic,readwrite) NSURLComponents *wsServerURLComponents;
-@property(strong,nonatomic,readwrite) KMSRequestMessageFactory *kmsRequestMessageFactory;
+
 
 @property(strong,nonatomic,readwrite) NSUserDefaults *userDefaults;
 
@@ -128,7 +129,7 @@ enum{
 -(void)initialize{
     [[KMSLog sharedInstance] setLogger:[[KurentoLogger alloc] init]];
     _peerConnectionFactory = [[RTCPeerConnectionFactory alloc] init];
-    _kmsRequestMessageFactory = [[KMSRequestMessageFactory alloc] init];
+    
     _userDefaults = [NSUserDefaults standardUserDefaults];
     [self loadViewURLS];
 }
@@ -258,12 +259,25 @@ enum{
 - (IBAction)makeCall:(UIButton *)sender {
     [self saveURLS];
     RACSRWebSocket *wsClient = [[RACSRWebSocket alloc] initWithURL:[_wsServerURLComponents URL]];
-    KMSSession *apiService = [KMSSession sessionWithWebSocketClient:wsClient];
+    _kurentoSession = [KMSSession sessionWithWebSocketClient:wsClient];
     KMSMessageFactoryMediaPipeline *mediaPipelineMessageFactory = [[KMSMessageFactoryMediaPipeline alloc] init];
-    _mediaPipeline = [KMSMediaPipeline pipelineWithKurentoSession:apiService messageFactory:mediaPipelineMessageFactory];
+    _mediaPipeline = [KMSMediaPipeline pipelineWithKurentoSession:_kurentoSession messageFactory:mediaPipelineMessageFactory];
     [mediaPipelineMessageFactory setDataSource:_mediaPipeline];
+    
+    RACSignal *createMediaPipelineSignal = [_mediaPipeline create];
+    
+    @weakify(self);
+    [createMediaPipelineSignal subscribeNext:^(NSString *mediaPipelineId) {
+        @strongify(self);
+        [self initializeWebRTCEndpoint:mediaPipelineId];
+        
+    }];
+}
+
+
+-(void)initializeWebRTCEndpoint:(NSString *)mediaPipelineId{
     KMSMessageFactoryWebRTCEndpoint *webRTCEndpointMessageFactory = [[KMSMessageFactoryWebRTCEndpoint alloc] init];
-    _webRTCEndpoint = [KMSWebRTCEndpoint endpointWithKurentoSession:apiService messageFactory:webRTCEndpointMessageFactory];
+    _webRTCEndpoint = [KMSWebRTCEndpoint endpointWithKurentoSession:_kurentoSession messageFactory:webRTCEndpointMessageFactory mediaPipelineId:mediaPipelineId];
     [webRTCEndpointMessageFactory setDataSource:_webRTCEndpoint];
     _peerConnection = [self initializePeerConnectionWithFactory:_peerConnectionFactory];
     
@@ -271,7 +285,7 @@ enum{
     RACSignal *createAndConnectWebRTCEndpointSignal =
     [[[[[[[[_mediaPipeline create] flattenMap:^RACStream *(NSString *mediaPipelineId) {
         @strongify(self);
-        return [[self webRTCEndpoint] createWithMediaPipelineId:mediaPipelineId];
+        return [[self webRTCEndpoint] create];
     }] flattenMap:^RACStream *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeOnICECandidate];
@@ -279,7 +293,7 @@ enum{
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaElementDisconnected];
     }] flattenMap:^RACStream *(id value) {
-         @strongify(self);
+        @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaElementConnected];
     }] flattenMap:^RACStream *(id value) {
         @strongify(self);
@@ -292,7 +306,7 @@ enum{
         return [[self webRTCEndpoint] connect:[[self webRTCEndpoint] identifier]];
     }];
     
-   // RACSignal *createAndConnectWebRTCEndpointSignal = [_mediaPipeline create];
+    // RACSignal *createAndConnectWebRTCEndpointSignal = [_mediaPipeline create];
     
     
     [createAndConnectWebRTCEndpointSignal subscribeError:^(NSError *error) {
@@ -315,7 +329,7 @@ enum{
         KMSICECandidate *kmsICECandidate = [eventData candidate];
         RTCICECandidate *peerICECandidate = [[RTCICECandidate alloc] initWithMid:[kmsICECandidate sdpMid] index:[kmsICECandidate sdpMLineIndex] sdp:[kmsICECandidate candidate]];
         [[self peerConnection] addICECandidate:peerICECandidate];
-
+        
         NSLog(@"");
     }];
     
@@ -335,7 +349,7 @@ enum{
     [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeConnectionStateChanged] subscribeNext:^(id x) {
         NSLog(@"");
     }];
-    
+
 }
 
 -(void)removeCallViewController{
