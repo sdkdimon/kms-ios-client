@@ -283,7 +283,7 @@ enum{
     
     @weakify(self);
     RACSignal *createAndConnectWebRTCEndpointSignal =
-    [[[[[[[[_mediaPipeline create] flattenMap:^RACStream *(NSString *mediaPipelineId) {
+    [[[[[[[_mediaPipeline create] flattenMap:^RACStream *(NSString *mediaPipelineId) {
         @strongify(self);
         return [[self webRTCEndpoint] create];
     }] flattenMap:^RACStream *(id value) {
@@ -298,9 +298,6 @@ enum{
     }] flattenMap:^RACStream *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaStateChanged];
-    }] flattenMap:^RACStream *(id value) {
-        @strongify(self);
-        return [[self webRTCEndpoint] subscribe:KMSEventTypeConnectionStateChanged];
     }] flattenMap:^RACStream *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] connect:[[self webRTCEndpoint] identifier]];
@@ -346,10 +343,6 @@ enum{
         NSLog(@"");
     }];
     
-    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeConnectionStateChanged] subscribeNext:^(id x) {
-        NSLog(@"");
-    }];
-
 }
 
 -(void)removeCallViewController{

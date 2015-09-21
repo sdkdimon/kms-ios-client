@@ -41,6 +41,7 @@
 		7530A095D9CF3E5B680D1C2A /* libPods-LoopBackCall.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LoopBackCall.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A04F4621B9065F0000344ED /* CallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallView.h; sourceTree = "<group>"; };
 		8A04F4631B9065F0000344ED /* CallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallView.m; sourceTree = "<group>"; };
+		8A38CB391BB0583C008E9BA0 /* KMSMediaState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSMediaState.h; sourceTree = "<group>"; };
 		8A8E02DE1B8F11740086FBF9 /* LoopBackCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoopBackCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8E02E21B8F11740086FBF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A8E02E31B8F11740086FBF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 				8ABDA3571BA6BB38008154CD /* KMSInvocationOperation.h */,
 				8ABDA3581BA6BB38008154CD /* KMSMediaType.h */,
 				8ABDA3591BA6BB38008154CD /* KMSMethod.h */,
+				8A38CB391BB0583C008E9BA0 /* KMSMediaState.h */,
 			);
 			path = Types;
 			sourceTree = "<group>";
