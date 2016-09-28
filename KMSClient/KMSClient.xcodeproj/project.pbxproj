@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A0A87471D996FAE0018D08E /* KMSClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF441F1D9951D10037DD9A /* KMSClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87481D99706E0018D08E /* KMSSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44561D99520C0037DD9A /* KMSSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87491D99710B0018D08E /* KMSMediaPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874A1D99711A0018D08E /* KMSWebRTCEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44541D99520C0037DD9A /* KMSWebRTCEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874B1D9971230018D08E /* KMSMessageFactoryWebRTCEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF444B1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874C1D9971290018D08E /* KMSRequestMessageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF444D1D99520C0037DD9A /* KMSRequestMessageFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874D1D99712E0018D08E /* KMSConstructorParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF442B1D99520C0037DD9A /* KMSConstructorParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874E1D9971300018D08E /* KMSElementConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF442D1D99520C0037DD9A /* KMSElementConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A874F1D9971320018D08E /* KMSEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF442F1D99520C0037DD9A /* KMSEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87501D9971330018D08E /* KMSEventData.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44311D99520C0037DD9A /* KMSEventData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87511D9971360018D08E /* KMSICECandidate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44331D99520C0037DD9A /* KMSICECandidate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87521D9971390018D08E /* KMSMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44351D99520C0037DD9A /* KMSMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87531D99713B0018D08E /* KMSMessageParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44371D99520C0037DD9A /* KMSMessageParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87541D99713D0018D08E /* KMSOperationParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44391D99520C0037DD9A /* KMSOperationParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87551D99713F0018D08E /* KMSRequestMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF443B1D99520C0037DD9A /* KMSRequestMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87561D9971420018D08E /* KMSResponseMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF443D1D99520C0037DD9A /* KMSResponseMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87571D9971440018D08E /* KMSResponseMessageResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF443F1D99520C0037DD9A /* KMSResponseMessageResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87581D9971470018D08E /* KMSCreationType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44421D99520C0037DD9A /* KMSCreationType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87591D9971490018D08E /* KMSEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44431D99520C0037DD9A /* KMSEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A875A1D99714C0018D08E /* KMSInvocationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44441D99520C0037DD9A /* KMSInvocationOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A875B1D99714E0018D08E /* KMSMediaState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44451D99520C0037DD9A /* KMSMediaState.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A875C1D9971520018D08E /* KMSMediaType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44461D99520C0037DD9A /* KMSMediaType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A875D1D9971540018D08E /* KMSMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44471D99520C0037DD9A /* KMSMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A875E1D9971600018D08E /* UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44281D99520C0037DD9A /* UUID.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8A0A87601D9971840018D08E /* KMSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44521D99520C0037DD9A /* KMSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87611D9973500018D08E /* KMSMessageFactoryMediaPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44491D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0A87621D9980720018D08E /* KMSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44501D99520C0037DD9A /* KMSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8ACF445A1D99520C0037DD9A /* UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44291D99520C0037DD9A /* UUID.m */; };
+		8ACF445C1D99520C0037DD9A /* KMSConstructorParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF442C1D99520C0037DD9A /* KMSConstructorParams.m */; };
+		8ACF445E1D99520C0037DD9A /* KMSElementConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF442E1D99520C0037DD9A /* KMSElementConnection.m */; };
+		8ACF44601D99520C0037DD9A /* KMSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44301D99520C0037DD9A /* KMSEvent.m */; };
+		8ACF44621D99520C0037DD9A /* KMSEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44321D99520C0037DD9A /* KMSEventData.m */; };
+		8ACF44641D99520C0037DD9A /* KMSICECandidate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44341D99520C0037DD9A /* KMSICECandidate.m */; };
+		8ACF44661D99520C0037DD9A /* KMSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44361D99520C0037DD9A /* KMSMessage.m */; };
+		8ACF44681D99520C0037DD9A /* KMSMessageParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44381D99520C0037DD9A /* KMSMessageParams.m */; };
+		8ACF446A1D99520C0037DD9A /* KMSOperationParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF443A1D99520C0037DD9A /* KMSOperationParams.m */; };
+		8ACF446C1D99520C0037DD9A /* KMSRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF443C1D99520C0037DD9A /* KMSRequestMessage.m */; };
+		8ACF446E1D99520C0037DD9A /* KMSResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF443E1D99520C0037DD9A /* KMSResponseMessage.m */; };
+		8ACF44701D99520C0037DD9A /* KMSResponseMessageResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44401D99520C0037DD9A /* KMSResponseMessageResult.m */; };
+		8ACF44781D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF444A1D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.m */; };
+		8ACF447A1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF444C1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m */; };
+		8ACF447C1D99520C0037DD9A /* KMSRequestMessageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF444E1D99520C0037DD9A /* KMSRequestMessageFactory.m */; };
+		8ACF447E1D99520C0037DD9A /* KMSLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44511D99520C0037DD9A /* KMSLog.m */; };
+		8ACF44801D99520C0037DD9A /* KMSWebRTCEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */; };
+		8ACF44821D99520C0037DD9A /* KMSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44551D99520C0037DD9A /* KMSSession.m */; };
+		8ACF44841D99520C0037DD9A /* KMSMediaPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */; };
+		E51D8C3F78D02B47A5E97859 /* Pods_KMSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.debug.xcconfig"; sourceTree = "<group>"; };
+		1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.release.xcconfig"; sourceTree = "<group>"; };
+		8ACF441C1D9951D10037DD9A /* KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACF441F1D9951D10037DD9A /* KMSClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSClient.h; sourceTree = "<group>"; };
+		8ACF44201D9951D10037DD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ACF44281D99520C0037DD9A /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUID.h; sourceTree = "<group>"; };
+		8ACF44291D99520C0037DD9A /* UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUID.m; sourceTree = "<group>"; };
+		8ACF442B1D99520C0037DD9A /* KMSConstructorParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSConstructorParams.h; sourceTree = "<group>"; };
+		8ACF442C1D99520C0037DD9A /* KMSConstructorParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSConstructorParams.m; sourceTree = "<group>"; };
+		8ACF442D1D99520C0037DD9A /* KMSElementConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSElementConnection.h; sourceTree = "<group>"; };
+		8ACF442E1D99520C0037DD9A /* KMSElementConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSElementConnection.m; sourceTree = "<group>"; };
+		8ACF442F1D99520C0037DD9A /* KMSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSEvent.h; sourceTree = "<group>"; };
+		8ACF44301D99520C0037DD9A /* KMSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSEvent.m; sourceTree = "<group>"; };
+		8ACF44311D99520C0037DD9A /* KMSEventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSEventData.h; sourceTree = "<group>"; };
+		8ACF44321D99520C0037DD9A /* KMSEventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSEventData.m; sourceTree = "<group>"; };
+		8ACF44331D99520C0037DD9A /* KMSICECandidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSICECandidate.h; sourceTree = "<group>"; };
+		8ACF44341D99520C0037DD9A /* KMSICECandidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSICECandidate.m; sourceTree = "<group>"; };
+		8ACF44351D99520C0037DD9A /* KMSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMessage.h; sourceTree = "<group>"; };
+		8ACF44361D99520C0037DD9A /* KMSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMessage.m; sourceTree = "<group>"; };
+		8ACF44371D99520C0037DD9A /* KMSMessageParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMessageParams.h; sourceTree = "<group>"; };
+		8ACF44381D99520C0037DD9A /* KMSMessageParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMessageParams.m; sourceTree = "<group>"; };
+		8ACF44391D99520C0037DD9A /* KMSOperationParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSOperationParams.h; sourceTree = "<group>"; };
+		8ACF443A1D99520C0037DD9A /* KMSOperationParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSOperationParams.m; sourceTree = "<group>"; };
+		8ACF443B1D99520C0037DD9A /* KMSRequestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSRequestMessage.h; sourceTree = "<group>"; };
+		8ACF443C1D99520C0037DD9A /* KMSRequestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSRequestMessage.m; sourceTree = "<group>"; };
+		8ACF443D1D99520C0037DD9A /* KMSResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSResponseMessage.h; sourceTree = "<group>"; };
+		8ACF443E1D99520C0037DD9A /* KMSResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSResponseMessage.m; sourceTree = "<group>"; };
+		8ACF443F1D99520C0037DD9A /* KMSResponseMessageResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSResponseMessageResult.h; sourceTree = "<group>"; };
+		8ACF44401D99520C0037DD9A /* KMSResponseMessageResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSResponseMessageResult.m; sourceTree = "<group>"; };
+		8ACF44421D99520C0037DD9A /* KMSCreationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSCreationType.h; sourceTree = "<group>"; };
+		8ACF44431D99520C0037DD9A /* KMSEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSEventType.h; sourceTree = "<group>"; };
+		8ACF44441D99520C0037DD9A /* KMSInvocationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSInvocationOperation.h; sourceTree = "<group>"; };
+		8ACF44451D99520C0037DD9A /* KMSMediaState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaState.h; sourceTree = "<group>"; };
+		8ACF44461D99520C0037DD9A /* KMSMediaType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaType.h; sourceTree = "<group>"; };
+		8ACF44471D99520C0037DD9A /* KMSMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMethod.h; sourceTree = "<group>"; };
+		8ACF44491D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMessageFactoryMediaPipeline.h; sourceTree = "<group>"; };
+		8ACF444A1D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMessageFactoryMediaPipeline.m; sourceTree = "<group>"; };
+		8ACF444B1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMessageFactoryWebRTCEndpoint.h; sourceTree = "<group>"; };
+		8ACF444C1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMessageFactoryWebRTCEndpoint.m; sourceTree = "<group>"; };
+		8ACF444D1D99520C0037DD9A /* KMSRequestMessageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSRequestMessageFactory.h; sourceTree = "<group>"; };
+		8ACF444E1D99520C0037DD9A /* KMSRequestMessageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSRequestMessageFactory.m; sourceTree = "<group>"; };
+		8ACF44501D99520C0037DD9A /* KMSLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSLog.h; sourceTree = "<group>"; };
+		8ACF44511D99520C0037DD9A /* KMSLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSLog.m; sourceTree = "<group>"; };
+		8ACF44521D99520C0037DD9A /* KMSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSLogger.h; sourceTree = "<group>"; };
+		8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSWebRTCEndpoint.m; sourceTree = "<group>"; };
+		8ACF44541D99520C0037DD9A /* KMSWebRTCEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSWebRTCEndpoint.h; sourceTree = "<group>"; };
+		8ACF44551D99520C0037DD9A /* KMSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSSession.m; sourceTree = "<group>"; };
+		8ACF44561D99520C0037DD9A /* KMSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSSession.h; sourceTree = "<group>"; };
+		8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMediaPipeline.m; sourceTree = "<group>"; };
+		8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaPipeline.h; sourceTree = "<group>"; };
+		A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8ACF44181D9951D10037DD9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E51D8C3F78D02B47A5E97859 /* Pods_KMSClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8ACF44121D9951D10037DD9A = {
+			isa = PBXGroup;
+			children = (
+				8ACF441E1D9951D10037DD9A /* KMSClient */,
+				8ACF441D1D9951D10037DD9A /* Products */,
+				9F12930E27B62628F614C1CF /* Pods */,
+				C57AE4CE5D4B4125932DE7D8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8ACF441D1D9951D10037DD9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF441C1D9951D10037DD9A /* KMSClient.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8ACF441E1D9951D10037DD9A /* KMSClient */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF44271D99520C0037DD9A /* UUID */,
+				8ACF442A1D99520C0037DD9A /* ModelLayer */,
+				8ACF44481D99520C0037DD9A /* MessageFactory */,
+				8ACF444F1D99520C0037DD9A /* Log */,
+				8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */,
+				8ACF44541D99520C0037DD9A /* KMSWebRTCEndpoint.h */,
+				8ACF44551D99520C0037DD9A /* KMSSession.m */,
+				8ACF44561D99520C0037DD9A /* KMSSession.h */,
+				8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */,
+				8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */,
+				8ACF441F1D9951D10037DD9A /* KMSClient.h */,
+				8ACF44201D9951D10037DD9A /* Info.plist */,
+			);
+			path = KMSClient;
+			sourceTree = "<group>";
+		};
+		8ACF44271D99520C0037DD9A /* UUID */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF44281D99520C0037DD9A /* UUID.h */,
+				8ACF44291D99520C0037DD9A /* UUID.m */,
+			);
+			path = UUID;
+			sourceTree = "<group>";
+		};
+		8ACF442A1D99520C0037DD9A /* ModelLayer */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF442B1D99520C0037DD9A /* KMSConstructorParams.h */,
+				8ACF442C1D99520C0037DD9A /* KMSConstructorParams.m */,
+				8ACF442D1D99520C0037DD9A /* KMSElementConnection.h */,
+				8ACF442E1D99520C0037DD9A /* KMSElementConnection.m */,
+				8ACF442F1D99520C0037DD9A /* KMSEvent.h */,
+				8ACF44301D99520C0037DD9A /* KMSEvent.m */,
+				8ACF44311D99520C0037DD9A /* KMSEventData.h */,
+				8ACF44321D99520C0037DD9A /* KMSEventData.m */,
+				8ACF44331D99520C0037DD9A /* KMSICECandidate.h */,
+				8ACF44341D99520C0037DD9A /* KMSICECandidate.m */,
+				8ACF44351D99520C0037DD9A /* KMSMessage.h */,
+				8ACF44361D99520C0037DD9A /* KMSMessage.m */,
+				8ACF44371D99520C0037DD9A /* KMSMessageParams.h */,
+				8ACF44381D99520C0037DD9A /* KMSMessageParams.m */,
+				8ACF44391D99520C0037DD9A /* KMSOperationParams.h */,
+				8ACF443A1D99520C0037DD9A /* KMSOperationParams.m */,
+				8ACF443B1D99520C0037DD9A /* KMSRequestMessage.h */,
+				8ACF443C1D99520C0037DD9A /* KMSRequestMessage.m */,
+				8ACF443D1D99520C0037DD9A /* KMSResponseMessage.h */,
+				8ACF443E1D99520C0037DD9A /* KMSResponseMessage.m */,
+				8ACF443F1D99520C0037DD9A /* KMSResponseMessageResult.h */,
+				8ACF44401D99520C0037DD9A /* KMSResponseMessageResult.m */,
+				8ACF44411D99520C0037DD9A /* Types */,
+			);
+			path = ModelLayer;
+			sourceTree = "<group>";
+		};
+		8ACF44411D99520C0037DD9A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF44421D99520C0037DD9A /* KMSCreationType.h */,
+				8ACF44431D99520C0037DD9A /* KMSEventType.h */,
+				8ACF44441D99520C0037DD9A /* KMSInvocationOperation.h */,
+				8ACF44451D99520C0037DD9A /* KMSMediaState.h */,
+				8ACF44461D99520C0037DD9A /* KMSMediaType.h */,
+				8ACF44471D99520C0037DD9A /* KMSMethod.h */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		8ACF44481D99520C0037DD9A /* MessageFactory */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF44491D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.h */,
+				8ACF444A1D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.m */,
+				8ACF444B1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.h */,
+				8ACF444C1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m */,
+				8ACF444D1D99520C0037DD9A /* KMSRequestMessageFactory.h */,
+				8ACF444E1D99520C0037DD9A /* KMSRequestMessageFactory.m */,
+			);
+			path = MessageFactory;
+			sourceTree = "<group>";
+		};
+		8ACF444F1D99520C0037DD9A /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				8ACF44501D99520C0037DD9A /* KMSLog.h */,
+				8ACF44511D99520C0037DD9A /* KMSLog.m */,
+				8ACF44521D99520C0037DD9A /* KMSLogger.h */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		9F12930E27B62628F614C1CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */,
+				1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C57AE4CE5D4B4125932DE7D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8ACF44191D9951D10037DD9A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A0A87621D9980720018D08E /* KMSLog.h in Headers */,
+				8A0A87491D99710B0018D08E /* KMSMediaPipeline.h in Headers */,
+				8A0A87611D9973500018D08E /* KMSMessageFactoryMediaPipeline.h in Headers */,
+				8A0A87601D9971840018D08E /* KMSLogger.h in Headers */,
+				8A0A875D1D9971540018D08E /* KMSMethod.h in Headers */,
+				8A0A875C1D9971520018D08E /* KMSMediaType.h in Headers */,
+				8A0A875B1D99714E0018D08E /* KMSMediaState.h in Headers */,
+				8A0A875A1D99714C0018D08E /* KMSInvocationOperation.h in Headers */,
+				8A0A87591D9971490018D08E /* KMSEventType.h in Headers */,
+				8A0A87581D9971470018D08E /* KMSCreationType.h in Headers */,
+				8A0A87571D9971440018D08E /* KMSResponseMessageResult.h in Headers */,
+				8A0A87561D9971420018D08E /* KMSResponseMessage.h in Headers */,
+				8A0A87551D99713F0018D08E /* KMSRequestMessage.h in Headers */,
+				8A0A87541D99713D0018D08E /* KMSOperationParams.h in Headers */,
+				8A0A87531D99713B0018D08E /* KMSMessageParams.h in Headers */,
+				8A0A87521D9971390018D08E /* KMSMessage.h in Headers */,
+				8A0A87511D9971360018D08E /* KMSICECandidate.h in Headers */,
+				8A0A87501D9971330018D08E /* KMSEventData.h in Headers */,
+				8A0A874F1D9971320018D08E /* KMSEvent.h in Headers */,
+				8A0A874E1D9971300018D08E /* KMSElementConnection.h in Headers */,
+				8A0A874D1D99712E0018D08E /* KMSConstructorParams.h in Headers */,
+				8A0A874C1D9971290018D08E /* KMSRequestMessageFactory.h in Headers */,
+				8A0A874B1D9971230018D08E /* KMSMessageFactoryWebRTCEndpoint.h in Headers */,
+				8A0A874A1D99711A0018D08E /* KMSWebRTCEndpoint.h in Headers */,
+				8A0A87471D996FAE0018D08E /* KMSClient.h in Headers */,
+				8A0A87481D99706E0018D08E /* KMSSession.h in Headers */,
+				8A0A875E1D9971600018D08E /* UUID.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8ACF441B1D9951D10037DD9A /* KMSClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8ACF44241D9951D10037DD9A /* Build configuration list for PBXNativeTarget "KMSClient" */;
+			buildPhases = (
+				09B5BFAB5BA1749CE18B561B /* [CP] Check Pods Manifest.lock */,
+				8ACF44171D9951D10037DD9A /* Sources */,
+				8ACF44181D9951D10037DD9A /* Frameworks */,
+				8ACF44191D9951D10037DD9A /* Headers */,
+				8ACF441A1D9951D10037DD9A /* Resources */,
+				AD527152C04D2E2C20559E34 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KMSClient;
+			productName = KMSClient;
+			productReference = 8ACF441C1D9951D10037DD9A /* KMSClient.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8ACF44131D9951D10037DD9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = dimon;
+				TargetAttributes = {
+					8ACF441B1D9951D10037DD9A = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = N7KJYZ955Q;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8ACF44161D9951D10037DD9A /* Build configuration list for PBXProject "KMSClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8ACF44121D9951D10037DD9A;
+			productRefGroup = 8ACF441D1D9951D10037DD9A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8ACF441B1D9951D10037DD9A /* KMSClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8ACF441A1D9951D10037DD9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09B5BFAB5BA1749CE18B561B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AD527152C04D2E2C20559E34 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8ACF44171D9951D10037DD9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ACF447E1D99520C0037DD9A /* KMSLog.m in Sources */,
+				8ACF447C1D99520C0037DD9A /* KMSRequestMessageFactory.m in Sources */,
+				8ACF44781D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.m in Sources */,
+				8ACF446A1D99520C0037DD9A /* KMSOperationParams.m in Sources */,
+				8ACF445C1D99520C0037DD9A /* KMSConstructorParams.m in Sources */,
+				8ACF446E1D99520C0037DD9A /* KMSResponseMessage.m in Sources */,
+				8ACF44841D99520C0037DD9A /* KMSMediaPipeline.m in Sources */,
+				8ACF44701D99520C0037DD9A /* KMSResponseMessageResult.m in Sources */,
+				8ACF44681D99520C0037DD9A /* KMSMessageParams.m in Sources */,
+				8ACF44801D99520C0037DD9A /* KMSWebRTCEndpoint.m in Sources */,
+				8ACF445E1D99520C0037DD9A /* KMSElementConnection.m in Sources */,
+				8ACF44621D99520C0037DD9A /* KMSEventData.m in Sources */,
+				8ACF44641D99520C0037DD9A /* KMSICECandidate.m in Sources */,
+				8ACF44821D99520C0037DD9A /* KMSSession.m in Sources */,
+				8ACF44601D99520C0037DD9A /* KMSEvent.m in Sources */,
+				8ACF445A1D99520C0037DD9A /* UUID.m in Sources */,
+				8ACF44661D99520C0037DD9A /* KMSMessage.m in Sources */,
+				8ACF447A1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m in Sources */,
+				8ACF446C1D99520C0037DD9A /* KMSRequestMessage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8ACF44221D9951D10037DD9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8ACF44231D9951D10037DD9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8ACF44251D9951D10037DD9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = KMSClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.KMSClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8ACF44261D9951D10037DD9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N7KJYZ955Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = KMSClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.KMSClient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8ACF44161D9951D10037DD9A /* Build configuration list for PBXProject "KMSClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ACF44221D9951D10037DD9A /* Debug */,
+				8ACF44231D9951D10037DD9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8ACF44241D9951D10037DD9A /* Build configuration list for PBXNativeTarget "KMSClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ACF44251D9951D10037DD9A /* Debug */,
+				8ACF44261D9951D10037DD9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8ACF44131D9951D10037DD9A /* Project object */;
+}

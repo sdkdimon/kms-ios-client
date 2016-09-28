@@ -1,0 +1,40 @@
+PODS:
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
+  - MantleNullValuesOmit (0.0.1):
+    - Mantle (= 2.0.7)
+  - NSDictionaryMerge (1.0)
+  - RACSRWebSocket (1.1.2):
+    - ReactiveCocoa (= 2.5)
+    - SocketRocket (= 0.4)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SocketRocket (0.4)
+  - WebRTC (13869.6.0)
+
+DEPENDENCIES:
+  - Mantle (= 2.0.7)
+  - MantleNullValuesOmit (= 0.0.1)
+  - NSDictionaryMerge (= 1.0)
+  - RACSRWebSocket (= 1.1.2)
+  - ReactiveCocoa (= 2.5)
+  - WebRTC (= 13869.6.0)
+
+SPEC CHECKSUMS:
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
+  MantleNullValuesOmit: e9c363e6abee04bfaa4373fce80ec66f174fe442
+  NSDictionaryMerge: 27071382a60ebf258eaed63f17430a51fb4c0c00
+  RACSRWebSocket: d4ef8d96d5c93754d9fda213215d79aea212c8c5
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
+  WebRTC: ee369681c4f06e868fa45a7a6abbbf2c865c49ae
+
+PODFILE CHECKSUM: 4827fec1f5ffec0201bec813cbb1b873db3ed739
+
+COCOAPODS: 1.0.1
