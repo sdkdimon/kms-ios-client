@@ -119,7 +119,7 @@
 }
 
 -(RACSignal *)close{
-    return [[self wsClient] closeConnection];
+    return [[self wsClient] closeConnectionSignal];
 }
 
 -(void)dealloc{

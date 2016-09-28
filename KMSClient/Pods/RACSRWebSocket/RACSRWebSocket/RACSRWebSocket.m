@@ -74,7 +74,7 @@
 
 
 
--(void)initialize{
+- (void)initialize{
      [self setDelegate:self];
     _webSocketDidOpenSignal = _webSocketDidOpenSubject = [RACSubject subject];
     _webSocketDidReceiveMessageSignal = _webSocketDidReceiveMessageSubject = [RACSubject subject];
@@ -85,7 +85,7 @@
     @weakify(self);
     _sendDataCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id data) {
        @strongify(self);
-        RACSignal *sendDataSignal = [[self openConnection] flattenMap:^RACStream *(id value) {
+        RACSignal *sendDataSignal = [[self openConnectionSignal] flattenMap:^RACStream *(id value) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 [self send:data];
                 [subscriber sendNext:nil];
@@ -98,7 +98,7 @@
     [_sendDataCommand setAllowsConcurrentExecution:YES];
 }
 
--(RACSignal *)openConnection{
+- (RACSignal *)openConnectionSignal{
     
     switch ([self readyState]) {
         case SR_OPEN:
@@ -125,7 +125,7 @@
     }
 }
 
--(RACSignal *)closeConnection{
+- (RACSignal *)closeConnectionSignal{
     switch ([self readyState]) {
         case SR_OPEN:{
             @weakify(self);
@@ -152,7 +152,7 @@
 }
 
 
--(void)send:(id)data{
+- (void)send:(id)data{
     if(_messageTransformer && [_messageTransformer respondsToSelector:@selector(websocket:transformRequestMessage:)]){
         data = [_messageTransformer websocket:self transformRequestMessage:data];
     }
@@ -162,7 +162,7 @@
 
 #pragma mark - SRWebSocketDelegate
 
--(void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
     if(_messageTransformer && [_messageTransformer respondsToSelector:@selector(websocket:transformResponseMessage:)]){
         message = [_messageTransformer websocket:self transformResponseMessage:message];
     }
@@ -170,22 +170,22 @@
     [_webSocketDidReceiveMessageSubject sendNext:args];
 }
 
--(void)webSocketDidOpen:(SRWebSocket *)webSocket{
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket{
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,nil];
     [_webSocketDidOpenSubject sendNext:args];
 }
 
--(void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,@(code),reason,@(wasClean),nil];
     [_webSocketDidCloseSubject sendNext:args];
 }
 
--(void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error{
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error{
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,error,nil];
     [_webSocketDidFailSubject sendNext:args];
 }
 
--(void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload{
+- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload{
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,pongPayload,nil];
     [_webSocketDidReceivePongSubject sendNext:args];
 }

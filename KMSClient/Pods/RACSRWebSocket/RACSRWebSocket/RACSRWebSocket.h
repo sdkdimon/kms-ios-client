@@ -28,8 +28,8 @@
 
 @protocol RACSRWebSocketMessageTransformer <NSObject>
 
--(id)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message;
--(id)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(id)message;
+- (id)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message;
+- (id)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(id)message;
 
 @end
 
@@ -46,7 +46,7 @@
 
 @property(strong,nonatomic,readonly) RACCommand *sendDataCommand;
 
--(RACSignal *)openConnection;
--(RACSignal *)closeConnection;
+- (RACSignal *)openConnectionSignal;
+- (RACSignal *)closeConnectionSignal;
 
 @end
