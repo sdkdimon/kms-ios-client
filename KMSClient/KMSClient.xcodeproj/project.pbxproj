@@ -53,12 +53,12 @@
 		8ACF44801D99520C0037DD9A /* KMSWebRTCEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */; };
 		8ACF44821D99520C0037DD9A /* KMSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44551D99520C0037DD9A /* KMSSession.m */; };
 		8ACF44841D99520C0037DD9A /* KMSMediaPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */; };
-		E51D8C3F78D02B47A5E97859 /* Pods_KMSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */; };
+		8B944043C426E7DDDFD4CED2 /* Pods_KMSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29937811D83FB2E0C4D11FEC /* Pods_KMSClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.debug.xcconfig"; sourceTree = "<group>"; };
-		1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.release.xcconfig"; sourceTree = "<group>"; };
+		0A510B890B6DECCCCD262DF1 /* Pods-KMSClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.release.xcconfig"; sourceTree = "<group>"; };
+		29937811D83FB2E0C4D11FEC /* Pods_KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACF441C1D9951D10037DD9A /* KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACF441F1D9951D10037DD9A /* KMSClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSClient.h; sourceTree = "<group>"; };
 		8ACF44201D9951D10037DD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		8ACF44561D99520C0037DD9A /* KMSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSSession.h; sourceTree = "<group>"; };
 		8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMediaPipeline.m; sourceTree = "<group>"; };
 		8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaPipeline.h; sourceTree = "<group>"; };
-		A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD36FE4406D203CAF3915690 /* Pods-KMSClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,20 +115,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E51D8C3F78D02B47A5E97859 /* Pods_KMSClient.framework in Frameworks */,
+				8B944043C426E7DDDFD4CED2 /* Pods_KMSClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FEF95E39EB37D0D96CFA432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29937811D83FB2E0C4D11FEC /* Pods_KMSClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8ACF44121D9951D10037DD9A = {
 			isa = PBXGroup;
 			children = (
 				8ACF441E1D9951D10037DD9A /* KMSClient */,
 				8ACF441D1D9951D10037DD9A /* Products */,
-				9F12930E27B62628F614C1CF /* Pods */,
-				C57AE4CE5D4B4125932DE7D8 /* Frameworks */,
+				EF9B6B3423EE976956B74E2E /* Pods */,
+				5FEF95E39EB37D0D96CFA432 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,21 +242,13 @@
 			path = Log;
 			sourceTree = "<group>";
 		};
-		9F12930E27B62628F614C1CF /* Pods */ = {
+		EF9B6B3423EE976956B74E2E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */,
-				1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */,
+				AD36FE4406D203CAF3915690 /* Pods-KMSClient.debug.xcconfig */,
+				0A510B890B6DECCCCD262DF1 /* Pods-KMSClient.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		C57AE4CE5D4B4125932DE7D8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A03EE1F30E63E93973EDB751 /* Pods_KMSClient.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,12 +295,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8ACF44241D9951D10037DD9A /* Build configuration list for PBXNativeTarget "KMSClient" */;
 			buildPhases = (
-				09B5BFAB5BA1749CE18B561B /* [CP] Check Pods Manifest.lock */,
+				0923BDA50ABC136793D1FFFD /* [CP] Check Pods Manifest.lock */,
 				8ACF44171D9951D10037DD9A /* Sources */,
 				8ACF44181D9951D10037DD9A /* Frameworks */,
 				8ACF44191D9951D10037DD9A /* Headers */,
 				8ACF441A1D9951D10037DD9A /* Resources */,
-				AD527152C04D2E2C20559E34 /* [CP] Copy Pods Resources */,
+				62344312AD11C13E0D620FB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,7 +355,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09B5BFAB5BA1749CE18B561B /* [CP] Check Pods Manifest.lock */ = {
+		0923BDA50ABC136793D1FFFD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,10 +367,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AD527152C04D2E2C20559E34 /* [CP] Copy Pods Resources */ = {
+		62344312AD11C13E0D620FB9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -517,7 +517,7 @@
 		};
 		8ACF44251D9951D10037DD9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CB51D081D287B8A0EE5A7B5 /* Pods-KMSClient.debug.xcconfig */;
+			baseConfigurationReference = AD36FE4406D203CAF3915690 /* Pods-KMSClient.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -542,7 +542,7 @@
 		};
 		8ACF44261D9951D10037DD9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F304DE9F5F6D4FFB8A70902 /* Pods-KMSClient.release.xcconfig */;
+			baseConfigurationReference = 0A510B890B6DECCCCD262DF1 /* Pods-KMSClient.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;

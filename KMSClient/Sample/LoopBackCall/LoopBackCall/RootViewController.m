@@ -35,7 +35,6 @@
 #import <WebRTC/RTCConfiguration.h>
 #import <WebRTC/RTCDispatcher.h>
 
-#import <RACSRWebSocket/RACSRWebSocket.h>
 #import <KMSClient/KMSSession.h>
 #import <KMSClient/KMSMediaPipeline.h>
 #import <KMSClient/KMSWebRTCEndpoint.h>
@@ -44,7 +43,7 @@
 #import <KMSClient/KMSMessageFactoryWebRTCEndpoint.h>
 #import <KMSClient/KMSICECandidate.h>
 #import <KMSClient/KMSEvent.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 #import <KMSClient/KMSLog.h>
 
@@ -258,7 +257,7 @@ enum{
                     KMSWebRTCEndpoint *webRTCSession = [self webRTCEndpoint];
                     RACSignal *processSDPOfferAndGatherICECandidates =
                     [[[webRTCSession processOffer:[sdp sdp]]
-                     flattenMap:^RACStream *(NSString *remoteSDP) {
+                     flattenMap:^RACSignal *(NSString *remoteSDP) {
                          @strongify(self);
                          return  [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                              RTCSessionDescription *remoteDesc = [[RTCSessionDescription alloc] initWithType:RTCSdpTypeAnswer sdp:remoteSDP];
@@ -276,7 +275,7 @@ enum{
                              }];
                              return nil;
                          }];
-                     }] flattenMap:^RACStream *(id value) {
+                     }] flattenMap:^RACSignal *(id value) {
                          return [webRTCSession gatherICECandidates];
                      }];
                     
@@ -298,11 +297,9 @@ enum{
 
 - (IBAction)makeCall:(UIButton *)sender {
     [self saveURLS];
-    RACSRWebSocket *wsClient = [[RACSRWebSocket alloc] initWithURL:[_wsServerURLComponents URL]];
-    _kurentoSession = [KMSSession sessionWithWebSocketClient:wsClient];
-    KMSMessageFactoryMediaPipeline *mediaPipelineMessageFactory = [[KMSMessageFactoryMediaPipeline alloc] init];
-    _mediaPipeline = [KMSMediaPipeline pipelineWithKurentoSession:_kurentoSession messageFactory:mediaPipelineMessageFactory];
-    [mediaPipelineMessageFactory setDataSource:_mediaPipeline];
+    //RACSRWebSocket *wsClient = [[RACSRWebSocket alloc] initWithURL:[_wsServerURLComponents URL]];
+    _kurentoSession = [[KMSSession alloc] initWithURL:[_wsServerURLComponents URL]];
+    _mediaPipeline = [KMSMediaPipeline pipelineWithKurentoSession:_kurentoSession];
     
     RACSignal *createMediaPipelineSignal = [_mediaPipeline create];
     
@@ -316,29 +313,28 @@ enum{
 
 
 -(void)initializeWebRTCEndpoint:(NSString *)mediaPipelineId{
-    KMSMessageFactoryWebRTCEndpoint *webRTCEndpointMessageFactory = [[KMSMessageFactoryWebRTCEndpoint alloc] init];
-    _webRTCEndpoint = [KMSWebRTCEndpoint endpointWithKurentoSession:_kurentoSession messageFactory:webRTCEndpointMessageFactory mediaPipelineId:mediaPipelineId];
-    [webRTCEndpointMessageFactory setDataSource:_webRTCEndpoint];
+    
+    _webRTCEndpoint = [KMSWebRTCEndpoint endpointWithKurentoSession:_kurentoSession mediaPipelineId:mediaPipelineId];
     _peerConnection = [self initializePeerConnectionWithFactory:_peerConnectionFactory];
     
     @weakify(self);
     RACSignal *createAndConnectWebRTCEndpointSignal =
-    [[[[[[[_mediaPipeline create] flattenMap:^RACStream *(NSString *mediaPipelineId) {
+    [[[[[[[_mediaPipeline create] flattenMap:^RACSignal *(NSString *mediaPipelineId) {
         @strongify(self);
         return [[self webRTCEndpoint] create];
-    }] flattenMap:^RACStream *(id value) {
+    }] flattenMap:^RACSignal *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeOnICECandidate];
-    }]  flattenMap:^RACStream *(id value) {
+    }]  flattenMap:^RACSignal *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaElementDisconnected];
-    }] flattenMap:^RACStream *(id value) {
+    }] flattenMap:^RACSignal *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaElementConnected];
-    }] flattenMap:^RACStream *(id value) {
+    }] flattenMap:^RACSignal *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] subscribe:KMSEventTypeMediaStateChanged];
-    }] flattenMap:^RACStream *(id value) {
+    }] flattenMap:^RACSignal *(id value) {
         @strongify(self);
         return [[self webRTCEndpoint] connect:[[self webRTCEndpoint] identifier]];
     }];
@@ -420,7 +416,7 @@ enum{
 
 -(void)peerConnectionDidClose{
     
-    RACSignal *wsClient = [[[self webRTCEndpoint] kurentoSession] close];
+    RACSignal *wsClient = [[[self webRTCEndpoint] kurentoSession] closeSignal];
     
     NSArray *closeKurentoSessionSignals = @[[[self mediaPipeline] dispose],wsClient];
     

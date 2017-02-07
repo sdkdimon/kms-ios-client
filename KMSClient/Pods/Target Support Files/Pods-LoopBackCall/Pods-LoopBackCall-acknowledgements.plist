@@ -36,6 +36,8 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>Mantle</string>
 			<key>Type</key>
@@ -66,6 +68,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>MantleNullValuesOmit</string>
 			<key>Type</key>
@@ -93,6 +97,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
 			<string>NSDictionaryMerge</string>
 			<key>Type</key>
@@ -100,37 +106,7 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>The MIT License (MIT)
-
-Copyright (c) 2015 Dmitry
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-</string>
-			<key>Title</key>
-			<string>RACSRWebSocket</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>**Copyright (c) 2012 - 2015, GitHub, Inc.**
+			<string>**Copyright (c) 2012 - 2016, GitHub, Inc.**
 **All rights reserved.**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -150,31 +126,10 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
+			<key>License</key>
+			<string>MIT</string>
 			<key>Title</key>
-			<string>ReactiveCocoa</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>
-   Copyright 2012 Square Inc.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-</string>
-			<key>Title</key>
-			<string>SocketRocket</string>
+			<string>ReactiveObjC</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -227,6 +182,14 @@ This source tree contains third party source code which is governed by third
 party licenses. Paths to the files and associated licenses are collected here.
 
 Files governed by third party licenses:
+base/base64.cc
+base/base64.h
+base/md5.cc
+base/md5.h
+base/sha1.cc
+base/sha1.h
+base/sigslot.cc
+base/sigslot.h
 common_audio/fft4g.c
 common_audio/signal_processing/spl_sqrt_floor.c
 common_audio/signal_processing/spl_sqrt_floor_arm.S
@@ -246,6 +209,67 @@ system_wrappers/source/spreadsortlib/constants.hpp
 system_wrappers/source/spreadsortlib/spreadsort.hpp
 
 Individual licenses for each file:
+-------------------------------------------------------------------------------
+Files:
+base/base64.cc
+base/base64.h
+
+License:
+//*********************************************************************
+//* Base64 - a simple base64 encoder and decoder.
+//*
+//*     Copyright (c) 1999, Bob Withers - bwit@pobox.com
+//*
+//* This code may be freely used for any purpose, either personal
+//* or commercial, provided the authors copyright notice remains
+//* intact.
+//*
+//* Enhancements by Stanley Yamane:
+//*     o reverse lookup table for the decode function
+//*     o reserve string buffer space in advance
+//*
+//*********************************************************************
+-------------------------------------------------------------------------------
+Files:
+base/md5.cc
+base/md5.h
+
+License:
+/*
+ * This code implements the MD5 message-digest algorithm.
+ * The algorithm is due to Ron Rivest.  This code was
+ * written by Colin Plumb in 1993, no copyright is claimed.
+ * This code is in the public domain; do with it what you wish.
+ *
+-------------------------------------------------------------------------------
+Files:
+base/sha1.cc
+base/sha1.h
+
+License:
+/*
+ * SHA-1 in C
+ * By Steve Reid &amp;lt;sreid@sea-to-sky.net&amp;gt;
+ * 100% Public Domain
+ *
+ * -----------------
+ * Modified 7/98
+ * By James H. Brown &amp;lt;jbrown@burgoyne.com&amp;gt;
+ * Still 100% Public Domain
+ *
+-------------------------------------------------------------------------------
+Files:
+base/sigslot.cc
+base/sigslot.h
+
+License:
+// sigslot.h: Signal/Slot classes
+//
+// Written by Sarah Thompson (sarah@telergy.com) 2002.
+//
+// License: Public domain. You are free to use this code however you like, with
+// the proviso that the author takes on no responsibility or liability for any
+// use.
 -------------------------------------------------------------------------------
 Files:
 common_audio/signal_processing/spl_sqrt_floor.c
@@ -549,24 +573,24 @@ Source:
 http://msdn.microsoft.com/en-us/cc300389.aspx#P
 
 License:
-This license governs use of code marked as &#8220;sample&#8221; or &#8220;example&#8221; available on
+This license governs use of code marked as “sample” or “example” available on
 this web site without a license agreement, as provided under the section above
-titled &#8220;NOTICE SPECIFIC TO SOFTWARE AVAILABLE ON THIS WEB SITE.&#8221; If you use
-such code (the &#8220;software&#8221;), you accept this license. If you do not accept the
+titled “NOTICE SPECIFIC TO SOFTWARE AVAILABLE ON THIS WEB SITE.” If you use
+such code (the “software”), you accept this license. If you do not accept the
 license, do not use the software.
 
 1. Definitions
 
-The terms &#8220;reproduce,&#8221; &#8220;reproduction,&#8221; &#8220;derivative works,&#8221; and &#8220;distribution&#8221;
+The terms “reproduce,” “reproduction,” “derivative works,” and “distribution”
 have the same meaning here as under U.S. copyright law.
 
-A &#8220;contribution&#8221; is the original software, or any additions or changes to the
+A “contribution” is the original software, or any additions or changes to the
 software.
 
-A &#8220;contributor&#8221; is any person that distributes its contribution under this
+A “contributor” is any person that distributes its contribution under this
 license.
 
-&#8220;Licensed patents&#8221; are a contributor&#8217;s patent claims that read directly on its
+“Licensed patents” are a contributor’s patent claims that read directly on its
 contribution.
 
 2. Grant of Rights
@@ -587,7 +611,7 @@ the software.
 3. Conditions and Limitations
 
 (A) No Trademark License- This license does not grant you rights to use any
-contributors&#8217; name, logo, or trademarks.
+contributors’ name, logo, or trademarks.
 
 (B) If you bring a patent claim against any contributor over patents that you
 claim are infringed by the software, your patent license from such contributor
@@ -603,7 +627,7 @@ with your distribution. If you distribute any portion of the software in
 compiled or object code form, you may only do so under a license that complies
 with this license.
 
-(E) The software is licensed &#8220;as-is.&#8221; You bear the risk of using it. The
+(E) The software is licensed “as-is.” You bear the risk of using it. The
 contributors give no express warranties, guarantees or conditions. You may
 have additional consumer rights under your local laws which this license
 cannot change. To the extent permitted under your local laws, the contributors
@@ -1136,6 +1160,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 &lt;/pre&gt;
 &lt;/body&gt;
 &lt;/html&gt;</string>
+			<key>License</key>
+			<string>BSD</string>
 			<key>Title</key>
 			<string>WebRTC</string>
 			<key>Type</key>

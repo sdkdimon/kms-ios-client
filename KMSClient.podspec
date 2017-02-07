@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KMSClient"
-  s.version          = "1.1.0"
+  s.version          = "1.1.1"
   s.summary          = "Kurento Media Server iOS client."
   s.homepage         = "https://github.com/sdkdimon/kms-ios-client"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -8,13 +8,13 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/sdkdimon/kms-ios-client.git", :tag => s.version }
 
   s.platform     = :ios
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '8.0'
   s.requires_arc = true
   s.module_name = 'KMSClient'
-  s.dependency 'RACSRWebSocket', '1.1.3'
-  s.dependency 'MantleNullValuesOmit', '0.0.1'
-  s.dependency 'Mantle', '2.0.7'
-  s.dependency 'ReactiveCocoa', '2.5'
+  s.dependency 'SocketRocket', '0.5.1'
+  s.dependency 'MantleNullValuesOmit', '0.0.2'
+  s.dependency 'Mantle', '2.1.0'
+  s.dependency 'ReactiveObjC', '2.1.2'
   s.dependency 'NSDictionaryMerge', '1.0'
   s.source_files = 'KMSClient/KMSClient/*.{h,m}'
   
