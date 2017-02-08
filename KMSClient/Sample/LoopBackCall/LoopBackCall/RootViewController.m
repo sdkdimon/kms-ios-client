@@ -297,7 +297,6 @@ enum{
 
 - (IBAction)makeCall:(UIButton *)sender {
     [self saveURLS];
-    //RACSRWebSocket *wsClient = [[RACSRWebSocket alloc] initWithURL:[_wsServerURLComponents URL]];
     _kurentoSession = [[KMSSession alloc] initWithURL:[_wsServerURLComponents URL]];
     _mediaPipeline = [KMSMediaPipeline pipelineWithKurentoSession:_kurentoSession];
     
