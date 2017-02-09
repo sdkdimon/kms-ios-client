@@ -24,6 +24,9 @@
 #import "KMSResponseMessage.h"
 #import "KMSRequestMessage.h"
 #import "KMSLog.h"
+#import "KMSRACSubject.h"
+
+
 
 @interface KMSSession () <SRWebSocketDelegate>
 
@@ -39,7 +42,8 @@
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidReceiveMessageSubject;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidOpenSubject;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidCloseSubject;
-@property (strong, nonatomic, readwrite) RACSubject *websocketDidFailWithErrorSubject;
+@property (strong, nonatomic, readwrite) KMSRACSubject *websocketDidFailWithErrorSubject;
+@property (strong, nonatomic, readwrite) RACSubject *websocketDidFailWithErrorExternalSubject;
 
 @end
 
@@ -54,13 +58,9 @@
         _websocketDidReceiveMessageSubject = [RACSubject subject];
         _websocketDidOpenSubject = [RACSubject subject];
         _websocketDidCloseSubject = [RACSubject subject];
-        _websocketDidFailWithErrorSubject = [RACSubject subject];
-        
-        _errorSignal =
-        [_websocketDidFailWithErrorSubject map:^NSError *(RACTuple *args) {
-            return [args second];
-        }];
-        
+        _websocketDidFailWithErrorSubject = [KMSRACSubject subject];
+        _errorSignal = _websocketDidFailWithErrorExternalSubject = [RACSubject subject];
+       
         _eventSignal =
         [[_websocketDidReceiveMessageSubject filter:^BOOL(RACTuple *args) {
             KMSMessage *message = [args second];
@@ -85,7 +85,6 @@
 {
     _webSocket = nil;
 }
-
 
 - (RACSignal *)openIfNeededSignal
 {
@@ -121,48 +120,54 @@
 }
 
 
-
 - (RACSignal *)sendMessageSignal:(KMSRequestMessage *)message
 {
-    RACSignal *openIfNeededSignal = [self openIfNeededSignal];
     @weakify(self);
     RACSignal *sendMesageSignal =
     [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        RACSignal *webSocketDidReceiveMessageSignal = [self websocketDidReceiveMessageSubject];
-        RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
+        if ([self state] == KMSSessioStateOpen)
+        {
+            RACSignal *webSocketDidReceiveMessageSignal = [self websocketDidReceiveMessageSubject];
+            RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
+            
+            RACCompoundDisposable *signalDisposable = [RACCompoundDisposable compoundDisposable];
+            
+            RACDisposable *webSocketDidReceiveMessageSignalDisposable =
+            [webSocketDidReceiveMessageSignal subscribeNext:^(RACTuple *args) {
+                KMSResponseMessage *responseMessage = [args second];
+                NSString *responseMessageId = [responseMessage identifier];
+                if (responseMessageId != nil  && [responseMessageId isEqualToString:[message identifier]])
+                {
+                    KMSResponseMessageResult *responseMessageResult = [responseMessage result];
+                    [self setSessionId:[responseMessageResult sessionId]];
+                    [subscriber sendNext:[responseMessageResult value]];
+                    [subscriber sendCompleted];
+                }
+            }];
+            RACDisposable *webSocketDidFailWithErrorSignalDisposable =
+            [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
+                NSError *error = [args second];
+                [subscriber sendError:error];
+            }];
+            
+            [signalDisposable addDisposable:webSocketDidReceiveMessageSignalDisposable];
+            [signalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
+            
+            NSData *messageData = [self transformRequestMessage:message];
+            [[self webSocket] send:messageData];
+            return signalDisposable;
+        }
+        else
+        {
+            [subscriber sendError:nil];
+            return nil;
+        }
         
-        RACCompoundDisposable *cloeseSignalDisposable = [RACCompoundDisposable compoundDisposable];
         
-        RACDisposable *webSocketDidReceiveMessageSignalDisposable =
-        [webSocketDidReceiveMessageSignal subscribeNext:^(RACTuple *args) {
-            KMSResponseMessage *responseMessage = [args second];
-            NSString *responseMessageId = [responseMessage identifier];
-            if (responseMessageId != nil  && [responseMessageId isEqualToString:[message identifier]])
-            {
-                KMSResponseMessageResult *responseMessageResult = [responseMessage result];
-                [self setSessionId:[responseMessageResult sessionId]];
-                [subscriber sendNext:[responseMessageResult value]];
-                [subscriber sendCompleted];
-            }
-        }];
-        RACDisposable *webSocketDidFailWithErrorSignalDisposable =
-        [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
-            NSError *error = [args second];
-            [subscriber sendError:error];
-        }];
-        
-        [cloeseSignalDisposable addDisposable:webSocketDidReceiveMessageSignalDisposable];
-        [cloeseSignalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
-        
-        NSData *messageData = [self transformRequestMessage:message];
-        [[self webSocket] send:messageData];
-        
-        return cloeseSignalDisposable;
     }];
     
-    
-    return [[openIfNeededSignal ignoreValues] concat:sendMesageSignal]; //sendMesageSignal;
+    return [[[self openIfNeededSignal] ignoreValues] concat:sendMesageSignal];
 }
 
 
@@ -171,32 +176,37 @@
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        KMSSessionState oldState = [self state];
-        [self setState:KMSSessioStateClosing];
-        RACSignal *webSocketDidCloseSignal = [self websocketDidCloseSubject];
-        RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
-        
-        RACCompoundDisposable *cloeseSignalDisposable = [RACCompoundDisposable compoundDisposable];
-        RACDisposable *webSocketDidCloseSignalDisposable =
-        [webSocketDidCloseSignal subscribeNext:^(RACTuple *args) {
-            [self disposeWebsocket];
-            [self setState:KMSSessioStateClosed];
-            [subscriber sendNext:nil];
-            [subscriber sendCompleted];
-        }];
-        
-        RACDisposable *webSocketDidFailWithErrorSignalDisposable =
-        [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
-            [self setState:oldState];
-            [subscriber sendError:[args second]];
-        }];
-        
-        [cloeseSignalDisposable addDisposable:webSocketDidCloseSignalDisposable];
-        [cloeseSignalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
-        
-        [[self webSocket] close];
-        
-        return cloeseSignalDisposable;
+        if ([self state] == KMSSessioStateOpen)
+        {
+            [self setState:KMSSessioStateClosing];
+            RACSignal *webSocketDidCloseSignal = [self websocketDidCloseSubject];
+            RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
+            
+            RACCompoundDisposable *signalDisposable = [RACCompoundDisposable compoundDisposable];
+            RACDisposable *webSocketDidCloseSignalDisposable =
+            [webSocketDidCloseSignal subscribeNext:^(RACTuple *args) {
+                
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            }];
+            
+            RACDisposable *webSocketDidFailWithErrorSignalDisposable =
+            [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
+                [subscriber sendError:[args second]];
+            }];
+            
+            [signalDisposable addDisposable:webSocketDidCloseSignalDisposable];
+            [signalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
+            
+            [[self webSocket] close];
+            
+            return signalDisposable;
+        }
+        else
+        {
+            [subscriber sendError:nil];
+            return nil;
+        }
     }];
 }
 
@@ -206,32 +216,37 @@
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
-        KMSSessionState oldState = [self state];
-        [self setState:KMSSessioStateOpening];
-        RACSignal *webSocketDidOpenSignal = [self websocketDidOpenSubject];
-        RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
-        
-        RACCompoundDisposable *openSignalDisposable = [RACCompoundDisposable compoundDisposable];
-        
-        RACDisposable *webSocketDidOpenSignalDisposable =
-        [webSocketDidOpenSignal subscribeNext:^(RACTuple *args) {
-            [self setState:KMSSessioStateOpen];
-            [subscriber sendNext:nil];
-            [subscriber sendCompleted];
-        }];
-        
-        RACDisposable *webSocketDidFailWithErrorSignalDisposable =
-        [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
-            [self setState:oldState];
-            [subscriber sendError:[args second]];
-        }];
-        
-        [openSignalDisposable addDisposable:webSocketDidOpenSignalDisposable];
-        [openSignalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
-        
-        [[self createWebSocket] open];
-        
-        return openSignalDisposable;
+        if ([self state] == KMSSessioStateClosed)
+        {
+            [self setState:KMSSessioStateOpening];
+            RACSignal *webSocketDidOpenSignal = [self websocketDidOpenSubject];
+            RACSignal *webSocketDidFailWithErrorSignal = [self websocketDidFailWithErrorSubject];
+            
+            RACCompoundDisposable *signalDisposable = [RACCompoundDisposable compoundDisposable];
+            
+            RACDisposable *webSocketDidOpenSignalDisposable =
+            [webSocketDidOpenSignal subscribeNext:^(RACTuple *args) {
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            }];
+            
+            RACDisposable *webSocketDidFailWithErrorSignalDisposable =
+            [webSocketDidFailWithErrorSignal subscribeNext:^(RACTuple *args) {
+                [subscriber sendError:[args second]];
+            }];
+            
+            [signalDisposable addDisposable:webSocketDidOpenSignalDisposable];
+            [signalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
+            
+            [[self createWebSocket] open];
+        return signalDisposable;
+        }
+        else
+        {
+            [subscriber sendError:nil];
+            return nil;
+        }
+            
     }];
 }
 
@@ -245,16 +260,28 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
+    [self setState:KMSSessioStateOpen];
     [_websocketDidOpenSubject sendNext:RACTuplePack(webSocket)];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
-    [_websocketDidFailWithErrorSubject sendNext:RACTuplePack(webSocket, error)];
     [self disposeWebsocket];
     [self setState:KMSSessioStateClosed];
+
+    if ([_websocketDidFailWithErrorSubject subscribersCount] > 0)
+    {
+        [_websocketDidFailWithErrorSubject sendNext:RACTuplePack(webSocket, error)];
+    }
+    else
+    {
+        [_websocketDidFailWithErrorExternalSubject sendNext:error];
+    }
+
 }
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
+    [self disposeWebsocket];
+    [self setState:KMSSessioStateClosed];
     [_websocketDidCloseSubject sendNext:RACTuplePack(webSocket, @(code), reason, @(wasClean))];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload

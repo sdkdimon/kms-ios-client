@@ -37,11 +37,13 @@ typedef enum {
 
 @property (strong, nonatomic, readonly) NSURL *url;
 @property (strong, nonatomic, readonly) RACSignal *eventSignal;
+
 @property (strong, nonatomic, readonly) RACSignal *errorSignal;
 @property (assign, nonatomic, readonly) KMSSessionState state;
 @property (strong, nonatomic, readonly) NSString *sessionId;
 
 - (RACSignal *)sendMessageSignal:(KMSRequestMessage *)requestMessage;
+- (RACSignal *)openSignal;
 - (RACSignal *)closeSignal;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A06FE831E4CBC3D00ADDD6C /* KMSRACSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A06FE811E4CBC3D00ADDD6C /* KMSRACSubject.h */; };
+		8A06FE841E4CBC3D00ADDD6C /* KMSRACSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A06FE821E4CBC3D00ADDD6C /* KMSRACSubject.m */; };
 		8A0A87471D996FAE0018D08E /* KMSClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF441F1D9951D10037DD9A /* KMSClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A87481D99706E0018D08E /* KMSSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44561D99520C0037DD9A /* KMSSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A87491D99710B0018D08E /* KMSMediaPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,6 +61,8 @@
 /* Begin PBXFileReference section */
 		0A510B890B6DECCCCD262DF1 /* Pods-KMSClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.release.xcconfig"; sourceTree = "<group>"; };
 		29937811D83FB2E0C4D11FEC /* Pods_KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A06FE811E4CBC3D00ADDD6C /* KMSRACSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSRACSubject.h; sourceTree = "<group>"; };
+		8A06FE821E4CBC3D00ADDD6C /* KMSRACSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSRACSubject.m; sourceTree = "<group>"; };
 		8ACF441C1D9951D10037DD9A /* KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACF441F1D9951D10037DD9A /* KMSClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSClient.h; sourceTree = "<group>"; };
 		8ACF44201D9951D10037DD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				8ACF442A1D99520C0037DD9A /* ModelLayer */,
 				8ACF44481D99520C0037DD9A /* MessageFactory */,
 				8ACF444F1D99520C0037DD9A /* Log */,
+				8A06FE811E4CBC3D00ADDD6C /* KMSRACSubject.h */,
+				8A06FE821E4CBC3D00ADDD6C /* KMSRACSubject.m */,
 				8ACF44541D99520C0037DD9A /* KMSWebRTCEndpoint.h */,
 				8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */,
 				8ACF44561D99520C0037DD9A /* KMSSession.h */,
@@ -272,6 +278,7 @@
 				8A0A87561D9971420018D08E /* KMSResponseMessage.h in Headers */,
 				8A0A87551D99713F0018D08E /* KMSRequestMessage.h in Headers */,
 				8A0A87541D99713D0018D08E /* KMSOperationParams.h in Headers */,
+				8A06FE831E4CBC3D00ADDD6C /* KMSRACSubject.h in Headers */,
 				8A0A87531D99713B0018D08E /* KMSMessageParams.h in Headers */,
 				8A0A87521D9971390018D08E /* KMSMessage.h in Headers */,
 				8A0A87511D9971360018D08E /* KMSICECandidate.h in Headers */,
@@ -411,6 +418,7 @@
 				8ACF44661D99520C0037DD9A /* KMSMessage.m in Sources */,
 				8ACF447A1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m in Sources */,
 				8ACF446C1D99520C0037DD9A /* KMSRequestMessage.m in Sources */,
+				8A06FE841E4CBC3D00ADDD6C /* KMSRACSubject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

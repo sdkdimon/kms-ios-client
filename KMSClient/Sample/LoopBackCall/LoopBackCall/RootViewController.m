@@ -404,7 +404,7 @@ enum{
     @weakify(self);
     RACSignal *completeCall = [[self webRTCEndpoint] dispose];
     [completeCall subscribeError:^(NSError *error) {
-
+        NSLog(@"");
     } completed:^{
         @strongify(self);
         [self removeCallViewController];
