@@ -104,7 +104,6 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NSDictionaryMerge/NSDictionaryMerge.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
   install_framework "${PODS_ROOT}/WebRTC/WebRTC.framework"
@@ -112,7 +111,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NSDictionaryMerge/NSDictionaryMerge.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
   install_framework "${PODS_ROOT}/WebRTC/WebRTC.framework"
