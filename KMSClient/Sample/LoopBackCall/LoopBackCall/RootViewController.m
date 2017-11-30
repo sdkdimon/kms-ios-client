@@ -246,12 +246,12 @@ enum{
     
     
     [_peerConnection addStream:localMediaStream];
+    @weakify(self);
     [_peerConnection offerForConstraints:[self defaultOfferConstraints] completionHandler:^(RTCSessionDescription * _Nullable sdp, NSError * _Nullable error) {
         NSLog(@"is main thread %@", [NSThread isMainThread] ? @"YES": @"NO");
-        
        [RTCDispatcher dispatchAsyncOnType:RTCDispatcherTypeMain block:^{
             NSLog(@"is main thread %@", [NSThread isMainThread] ? @"YES": @"NO");
-            @weakify(self);
+           @strongify(self);
             [[self peerConnection] setLocalDescription:sdp completionHandler:^(NSError * _Nullable error) {
                [RTCDispatcher dispatchAsyncOnType:RTCDispatcherTypeMain block:^{
                     KMSWebRTCEndpoint *webRTCSession = [self webRTCEndpoint];
@@ -353,26 +353,27 @@ enum{
     }];
     
     [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeOnICECandidate] subscribeNext:^(KMSEventDataICECandidate *eventData) {
+        @strongify(self);
         KMSICECandidate *kmsICECandidate = [eventData candidate];
         
-        RTCIceCandidate *peerICECandidate = [[RTCIceCandidate alloc] initWithSdp:[kmsICECandidate candidate] sdpMLineIndex:[kmsICECandidate sdpMLineIndex] sdpMid:[kmsICECandidate sdpMid]];
+        RTCIceCandidate *peerICECandidate = [[RTCIceCandidate alloc] initWithSdp:[kmsICECandidate candidate] sdpMLineIndex:(int)[kmsICECandidate sdpMLineIndex] sdpMid:[kmsICECandidate sdpMid]];
         [[self peerConnection] addIceCandidate:peerICECandidate];
         
         NSLog(@"");
     }];
     
     
-    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaElementConnected] subscribeNext:^(id x) {
-        NSLog(@"");
-    }];
-    
-    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaElementDisconnected] subscribeNext:^(id x) {
-        NSLog(@"");
-    }];
-    
-    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaStateChanged] subscribeNext:^(id x) {
-        NSLog(@"");
-    }];
+//    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaElementConnected] subscribeNext:^(id x) {
+//        NSLog(@"");
+//    }];
+//    
+//    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaElementDisconnected] subscribeNext:^(id x) {
+//        NSLog(@"");
+//    }];
+//    
+//    [[[self webRTCEndpoint] eventSignalForEvent:KMSEventTypeMediaStateChanged] subscribeNext:^(id x) {
+//        NSLog(@"");
+//    }];
     
 }
 

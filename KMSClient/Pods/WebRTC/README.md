@@ -3,18 +3,24 @@
 ![](https://img.shields.io/cocoapods/v/WebRTC.svg?maxAge=100) ![](https://img.shields.io/cocoapods/dw/WebRTC.svg?maxAge=100)
 ![](https://img.shields.io/cocoapods/l/WebRTC.svg?maxAge=100)
 
+[__!__] Please report all WebRTC related (not specific to this binary build) bugs and questions to [discussion group](https://groups.google.com/forum/#!forum/discuss-webrtc) or [official bug tracker](https://bugs.chromium.org/p/webrtc/issues/list). You more likely to find professional help there.
+
 # Contents
 
 - [Installation](#installation)
-  - [Unstable versions](#unstable-versions)
 - [Usage](#usage)
-- [Bitcode](#bitcode)
 - [Information](#information)
 - [Links](#links)
 
 # Installation
 
-__Cocoapods__ (add to Podfile):
+[__!__] Bitcode is supported by the upstream, but Google source code builder (GN) produces ~700Mb binary with enabled bitcode, so it's hardly possible to distribute as a framework via CocoaPods/Carthage and that's why bitcode is __disabled__ in my build. Follow corresponding issue there: https://bugs.chromium.org/p/webrtc/issues/detail?id=5085
+
+Make sure to disable bitcode for your project: Go to your project's settings and find the *Build settings* tab, check *All* and search for *bitcode*, then set it to __No__.
+
+If you encounter linker errors, try to add the framework to [embedded binaries section](https://github.com/Anakros/WebRTC/issues/18#issuecomment-271535794).
+
+__CocoaPods__ (add to Podfile):
 
 ```ruby
 pod "WebRTC"
@@ -23,24 +29,12 @@ pod "WebRTC"
 __Carthage__ (add to Cartfile):
 
 ```
-github "Anakros/WebRTC-iOS"
+github "Anakros/WebRTC"
 ```
 
-__Manual__: just download framework from [the latest release](https://github.com/Anakros/WebRTC-iOS/releases/latest) and copy it to your project
+__Manual__: just download framework from [the latest release](https://github.com/Anakros/WebRTC/releases/latest) and copy it to your project
 
->You can only use the binary release, because the whole WebRTC repository is ~12Gb of disk space
-
-## Unstable versions
-
-__Cocoapods__ (will install specified unstable version or _any_ higher version):
-```ruby
-pod "WebRTC", ">= 14093.0.0-master"
-```
-
-__Carthage__ (there is no way to auto-update to the latest unstable version at the current moment, so you should specify [corresponding version tag](https://github.com/Anakros/WebRTC-iOS/tags)):
-```
-github "Anakros/WebRTC-iOS" "14093.0.0-master"
-```
+>You can only use the binary release, because the whole WebRTC repository takes ~12Gb of disk space
 
 # Usage
 
@@ -64,68 +58,40 @@ NSLog(@"%@", device);
 NSLog(@"%d", RTCInitializeSSL());
 ```
 
-# Bitcode
-
-Bitcode isn't supported in the upstream for now. So you should disable it in the project build settings.
+>Check out [Official Example App](https://webrtc.googlesource.com/src/+/master/examples/objc/AppRTCMobile/)!
 
 # Information
 
-Built from `https://chromium.googlesource.com/external/webrtc/` using `webrtc/build/ios/build_ios_libs.sh` script.
-
-Following patches applied:
-
-> Hardware H264 support enabled
+Built from `https://chromium.googlesource.com/external/webrtc/` using `tools_webrtc/ios/build_ios_libs.py` script with following modifications (to enable x86 architecture):
 
 ```diff
-diff --git a/webrtc/build/common.gypi b/webrtc/build/common.gypi
-index 36a2dae..1332809 100644
---- a/webrtc/build/common.gypi
-+++ b/webrtc/build/common.gypi
-@@ -155,7 +155,7 @@
- 
-     # Enable this to use HW H.264 encoder/decoder on iOS/Mac PeerConnections.
-     # Enabling this may break interop with Android clients that support H264.
--    'use_objc_h264%': 0,
-+    'use_objc_h264%': 1,
- 
-     # Enable this to prevent extern symbols from being hidden on iOS builds.
-     # The chromium settings we inherit hide symbols by default on Release
+diff --git a/tools_webrtc/ios/build_ios_libs.py b/tools_webrtc/ios/build_ios_libs.py
+index 734f3e216..e6f250c97 100755
+--- a/tools_webrtc/ios/build_ios_libs.py
++++ b/tools_webrtc/ios/build_ios_libs.py
+@@ -165,8 +165,6 @@ def main():
 
-```
+   # Ignoring x86 except for static libraries for now because of a GN build issue
+   # where the generated dynamic framework has the wrong architectures.
+-  if 'x86' in architectures and args.build_type != 'static_only':
+-    architectures.remove('x86')
 
-> Provide default implementation for WebRTC metrics
-
-```diff
-diff --git a/webrtc/system_wrappers/system_wrappers.gyp b/webrtc/system_wrappers/system_wrappers.gyp
-index ea8fdb6..4ff2bab 100644
---- a/webrtc/system_wrappers/system_wrappers.gyp
-+++ b/webrtc/system_wrappers/system_wrappers.gyp
-@@ -44,6 +44,7 @@
-         'include/timestamp_extrapolator.h',
-         'include/trace.h',
-         'include/utf_util_win.h',
-+        'include/metrics_default.h',
-         'source/aligned_malloc.cc',
-         'source/atomic32_win.cc',
-         'source/clock.cc',
-@@ -76,6 +77,7 @@
-         'source/trace_posix.h',
-         'source/trace_win.cc',
-         'source/trace_win.h',
-+        'source/metrics_default.cc',
-       ],
-       'conditions': [
-         ['enable_data_logging==1', {
+   # Build all architectures.
+   for arch in architectures:
 ```
 
 # Links
 
+[Official Example App](https://webrtc.googlesource.com/src/+/master/examples/objc/AppRTCMobile/)
+
+[Official WebRTC Source Code Repository](https://webrtc.googlesource.com/src/)
+
 [WebRTC Homepage](https://webrtc.org/)
 
-[WebRTC discussion group](https://groups.google.com/forum/#!forum/discuss-webrtc)
+[WebRTC Discussion Group](https://groups.google.com/forum/#!forum/discuss-webrtc)
+
+[WebRTC Bug Tracker](https://bugs.chromium.org/p/webrtc/issues/list)
 
 [CocoaDocs](http://cocoadocs.org/docsets/WebRTC/)
 
 [CocoaPods Page](https://cocoapods.org/pods/WebRTC)
-
-[WebRTC Bug Tracker](https://bugs.chromium.org/p/webrtc/issues/list)

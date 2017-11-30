@@ -5,7 +5,8 @@ use_frameworks!
 
 
 def shared_pods
-   pod 'ReactiveObjC', '2.1.2'
+   pod 'SocketRocket', '0.5.1'
+   pod 'ReactiveObjC', '3.0.0'
    pod 'MantleNullValuesOmit', '0.0.2'
    pod 'NSDictionaryMerge', '1.0'
    pod 'Mantle', '2.1.0'
@@ -14,13 +15,12 @@ end
 
 target :LoopBackCall do
    project 'Sample/LoopBackCall/LoopBackCall.xcodeproj'
-   pod 'WebRTC', '57.2.16123'
+   pod 'WebRTC', '63.11.20455'
    shared_pods
   end
 
 target 'KMSClient' do
   project 'KMSClient.xcodeproj'
-  pod 'SocketRocket', '0.5.1'
   shared_pods
 end
 
