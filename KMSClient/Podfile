@@ -12,7 +12,7 @@ end
 
 target :LoopBackCall do
    project 'Sample/LoopBackCall/LoopBackCall.xcodeproj'
-   pod 'WebRTC', '63.11.20455'
+   pod 'WebRTC', '61.5.19063'
    shared_pods
   end
 

@@ -55,6 +55,8 @@
 		8ACF44801D99520C0037DD9A /* KMSWebRTCEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44531D99520C0037DD9A /* KMSWebRTCEndpoint.m */; };
 		8ACF44821D99520C0037DD9A /* KMSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44551D99520C0037DD9A /* KMSSession.m */; };
 		8ACF44841D99520C0037DD9A /* KMSMediaPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */; };
+		8AF821EF1FD16B910080BC0A /* KMSSessionConnectionMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF821ED1FD16B900080BC0A /* KMSSessionConnectionMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AF821F01FD16B910080BC0A /* KMSSessionConnectionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF821EE1FD16B910080BC0A /* KMSSessionConnectionMonitor.m */; };
 		8B944043C426E7DDDFD4CED2 /* Pods_KMSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29937811D83FB2E0C4D11FEC /* Pods_KMSClient.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +113,8 @@
 		8ACF44561D99520C0037DD9A /* KMSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSSession.h; sourceTree = "<group>"; };
 		8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSMediaPipeline.m; sourceTree = "<group>"; };
 		8ACF44581D99520C0037DD9A /* KMSMediaPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSMediaPipeline.h; sourceTree = "<group>"; };
+		8AF821ED1FD16B900080BC0A /* KMSSessionConnectionMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSSessionConnectionMonitor.h; sourceTree = "<group>"; };
+		8AF821EE1FD16B910080BC0A /* KMSSessionConnectionMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMSSessionConnectionMonitor.m; sourceTree = "<group>"; };
 		AD36FE4406D203CAF3915690 /* Pods-KMSClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMSClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KMSClient/Pods-KMSClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +173,8 @@
 				8ACF44571D99520C0037DD9A /* KMSMediaPipeline.m */,
 				8ACF441F1D9951D10037DD9A /* KMSClient.h */,
 				8ACF44201D9951D10037DD9A /* Info.plist */,
+				8AF821ED1FD16B900080BC0A /* KMSSessionConnectionMonitor.h */,
+				8AF821EE1FD16B910080BC0A /* KMSSessionConnectionMonitor.m */,
 			);
 			path = KMSClient;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				8A0A87521D9971390018D08E /* KMSMessage.h in Headers */,
 				8A0A87511D9971360018D08E /* KMSICECandidate.h in Headers */,
 				8A0A87501D9971330018D08E /* KMSEventData.h in Headers */,
+				8AF821EF1FD16B910080BC0A /* KMSSessionConnectionMonitor.h in Headers */,
 				8A0A874F1D9971320018D08E /* KMSEvent.h in Headers */,
 				8A0A874E1D9971300018D08E /* KMSElementConnection.h in Headers */,
 				8A0A874D1D99712E0018D08E /* KMSConstructorParams.h in Headers */,
@@ -412,6 +419,7 @@
 				8ACF44701D99520C0037DD9A /* KMSResponseMessageResult.m in Sources */,
 				8ACF44681D99520C0037DD9A /* KMSMessageParams.m in Sources */,
 				8ACF44801D99520C0037DD9A /* KMSWebRTCEndpoint.m in Sources */,
+				8AF821F01FD16B910080BC0A /* KMSSessionConnectionMonitor.m in Sources */,
 				8ACF445E1D99520C0037DD9A /* KMSElementConnection.m in Sources */,
 				8ACF44621D99520C0037DD9A /* KMSEventData.m in Sources */,
 				8ACF44641D99520C0037DD9A /* KMSICECandidate.m in Sources */,

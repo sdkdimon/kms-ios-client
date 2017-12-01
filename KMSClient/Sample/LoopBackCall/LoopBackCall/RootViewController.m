@@ -501,13 +501,13 @@ didChangeSignalingState:(RTCSignalingState)stateChanged{
 
 /** Called when negotiation is needed, for example ICE has restarted. */
 - (void)peerConnectionShouldNegotiate:(RTCPeerConnection *)peerConnection{
-    NSLog(@"");
+    NSLog(@"peerConnectionShouldNegotiate");
 }
 
 /** Called any time the IceConnectionState changes. */
 - (void)peerConnection:(RTCPeerConnection *)peerConnection
 didChangeIceConnectionState:(RTCIceConnectionState)newState{
-    
+    NSLog(@"didChangeIceConnectionState %@", [[self iceConnectionState] objectForKey:@(newState)]);
 }
 
 /** Called any time the IceGatheringState changes. */
@@ -547,6 +547,28 @@ didRemoveIceCandidates:(NSArray<RTCIceCandidate *> *)candidates{
     
 }
 
+///** Represents the ice connection state of the peer connection. */
+//typedef NS_ENUM(NSInteger, RTCIceConnectionState) {
+//    RTCIceConnectionStateNew,
+//    RTCIceConnectionStateChecking,
+//    RTCIceConnectionStateConnected,
+//    RTCIceConnectionStateCompleted,
+//    RTCIceConnectionStateFailed,
+//    RTCIceConnectionStateDisconnected,
+//    RTCIceConnectionStateClosed,
+//    RTCIceConnectionStateCount,
+//};
 
+- (NSDictionary *)iceConnectionState
+{
+    return @{@(RTCIceConnectionStateNew) : @"RTCIceConnectionStateNew",
+             @(RTCIceConnectionStateChecking) : @"RTCIceConnectionStateChecking",
+             @(RTCIceConnectionStateConnected) : @"RTCIceConnectionStateConnected",
+             @(RTCIceConnectionStateCompleted) : @"RTCIceConnectionStateCompleted",
+             @(RTCIceConnectionStateDisconnected) : @"RTCIceConnectionStateDisconnected",
+             @(RTCIceConnectionStateClosed) : @"RTCIceConnectionStateClosed",
+             @(RTCIceConnectionStateCount) : @"RTCIceConnectionStateCount"
+             };
+}
 
 @end

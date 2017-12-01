@@ -3,7 +3,7 @@
 ![](https://img.shields.io/cocoapods/v/WebRTC.svg?maxAge=100) ![](https://img.shields.io/cocoapods/dw/WebRTC.svg?maxAge=100)
 ![](https://img.shields.io/cocoapods/l/WebRTC.svg?maxAge=100)
 
-[__!__] Please report all WebRTC related (not specific to this binary build) bugs and questions to [discussion group](https://groups.google.com/forum/#!forum/discuss-webrtc) or [official bug tracker](https://bugs.chromium.org/p/webrtc/issues/list). You more likely to find professional help there.
+[__!__] Please report all WebRTC related (not specific to this binary build) bugs and questions to [discussion group](https://groups.google.com/forum/#!forum/discuss-webrtc) or [official bug tracker](https://bugs.chromium.org/p/webrtc/issues/list)
 
 # Contents
 
@@ -58,8 +58,6 @@ NSLog(@"%@", device);
 NSLog(@"%d", RTCInitializeSSL());
 ```
 
->Check out [Official Example App](https://webrtc.googlesource.com/src/+/master/examples/objc/AppRTCMobile/)!
-
 # Information
 
 Built from `https://chromium.googlesource.com/external/webrtc/` using `tools_webrtc/ios/build_ios_libs.py` script with following modifications (to enable x86 architecture):
@@ -82,16 +80,12 @@ index 734f3e216..e6f250c97 100755
 
 # Links
 
-[Official Example App](https://webrtc.googlesource.com/src/+/master/examples/objc/AppRTCMobile/)
-
-[Official WebRTC Source Code Repository](https://webrtc.googlesource.com/src/)
-
 [WebRTC Homepage](https://webrtc.org/)
 
-[WebRTC Discussion Group](https://groups.google.com/forum/#!forum/discuss-webrtc)
-
-[WebRTC Bug Tracker](https://bugs.chromium.org/p/webrtc/issues/list)
+[WebRTC discussion group](https://groups.google.com/forum/#!forum/discuss-webrtc)
 
 [CocoaDocs](http://cocoadocs.org/docsets/WebRTC/)
 
 [CocoaPods Page](https://cocoapods.org/pods/WebRTC)
+
+[WebRTC Bug Tracker](https://bugs.chromium.org/p/webrtc/issues/list)

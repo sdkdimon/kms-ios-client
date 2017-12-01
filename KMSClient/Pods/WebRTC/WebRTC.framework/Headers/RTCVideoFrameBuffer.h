@@ -69,8 +69,6 @@ RTC_EXPORT
 @interface RTCCVPixelBuffer : NSObject <RTCVideoFrameBuffer>
 
 @property(nonatomic, readonly) CVPixelBufferRef pixelBuffer;
-@property(nonatomic, readonly) int cropX;
-@property(nonatomic, readonly) int cropY;
 
 - (instancetype)initWithPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 - (instancetype)initWithPixelBuffer:(CVPixelBufferRef)pixelBuffer

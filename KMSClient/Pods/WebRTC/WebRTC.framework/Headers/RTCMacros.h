@@ -8,8 +8,8 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#ifndef SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_
-#define SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_
+#ifndef WEBRTC_SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_
+#define WEBRTC_SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_
 
 #define RTC_EXPORT __attribute__((visibility("default")))
 
@@ -25,4 +25,4 @@
 #define RTC_FWD_DECL_OBJC_CLASS(classname) typedef struct objc_object classname
 #endif
 
-#endif  // SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_
+#endif  // WEBRTC_SDK_OBJC_FRAMEWORK_HEADERS_WEBRTC_RTCMACROS_H_

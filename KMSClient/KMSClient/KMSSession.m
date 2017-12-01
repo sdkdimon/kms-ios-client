@@ -25,10 +25,11 @@
 #import "KMSRequestMessage.h"
 #import "KMSLog.h"
 #import "KMSRACSubject.h"
+#import "KMSSessionConnectionMonitor.h"
 
 
 
-@interface KMSSession () <SRWebSocketDelegate>
+@interface KMSSession () <SRWebSocketDelegate, KMSSessionPing>
 
 @property(strong,nonatomic,readwrite) NSString *sessionId;
 
@@ -44,6 +45,7 @@
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidCloseSubject;
 @property (strong, nonatomic, readwrite) KMSRACSubject *websocketDidFailWithErrorSubject;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidFailWithErrorExternalSubject;
+@property (strong, nonatomic, readwrite) KMSSessionConnectionMonitor *connectionMonitor;
 
 @end
 
@@ -60,7 +62,8 @@
         _websocketDidCloseSubject = [RACSubject subject];
         _websocketDidFailWithErrorSubject = [KMSRACSubject subject];
         _errorSignal = _websocketDidFailWithErrorExternalSubject = [RACSubject subject];
-       
+        _connectionMonitor = [[KMSSessionConnectionMonitor alloc] initWithPingTimeInterval:5.0f pingFailCount:5];
+        _connectionMonitor.ping = self;
         _eventSignal =
         [[_websocketDidReceiveMessageSubject filter:^BOOL(RACTuple *args) {
             KMSMessage *message = [args second];
@@ -120,9 +123,6 @@
         }
         
     }];
-    
-    
-    
 }
 
 
@@ -277,6 +277,7 @@
 {
     [self setState:KMSSessioStateOpen];
     [_websocketDidOpenSubject sendNext:RACTuplePack(webSocket)];
+    [_connectionMonitor start];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
@@ -301,7 +302,18 @@
 }
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload
 {
-    
+    [_connectionMonitor didReceivePong:pongPayload];
+}
+
+- (void)sendPing:(NSData *)data
+{
+    [_webSocket sendPing:data];
+}
+
+- (void)didFailReceivePong
+{
+    NSError *connectionError = [NSError errorWithDomain:@"org.sdkdimon.KMSClient" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"Connection lost."}];
+    [_websocketDidFailWithErrorExternalSubject sendNext:connectionError];
 }
 
 // Return YES to convert messages sent as Text to an NSString. Return NO to skip NSData -> NSString conversion for Text messages. Defaults to YES.
@@ -324,5 +336,7 @@
     KMSLog(KMSLogMessageLevelVerbose,@"Kurento API client did receive message \n%@",jsonObject);
     return [MTLJSONAdapter modelOfClass:[KMSMessage class] fromJSONDictionary:jsonObject error:nil];
 }
+
+
 
 @end
