@@ -270,9 +270,15 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
+    [self sessionDidFailWithError:error];
+}
+
+- (void)sessionDidFailWithError:(NSError *)error
+{
+    [_connectionMonitor stop];
     [self disposeWebsocket];
     [self setState:KMSSessioStateClosed];
-
+    
     if ([_websocketDidFailWithErrorSubject subscribersCount] > 0)
     {
         [_websocketDidFailWithErrorSubject sendNext:RACTuplePack(webSocket, error)];
@@ -303,7 +309,7 @@
 - (void)didFailReceivePong
 {
     NSError *connectionError = [NSError errorWithDomain:@"org.sdkdimon.KMSClient" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"Connection lost."}];
-    [_websocketDidFailWithErrorExternalSubject sendNext:connectionError];
+    [self sessionDidFailWithError:connectionError];
 }
 
 // Return YES to convert messages sent as Text to an NSString. Return NO to skip NSData -> NSString conversion for Text messages. Defaults to YES.

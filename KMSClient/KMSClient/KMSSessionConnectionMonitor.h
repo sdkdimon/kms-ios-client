@@ -34,5 +34,6 @@
 @property (weak, nonatomic, readwrite) id <KMSSessionPing> ping;
 
 - (void)start;
+- (void)stop;
 
 @end
