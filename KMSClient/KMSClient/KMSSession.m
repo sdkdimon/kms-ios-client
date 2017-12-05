@@ -30,10 +30,10 @@
 
 @interface KMSSession () <SRWebSocketDelegate, KMSSessionPing>
 
-@property(strong,nonatomic,readwrite) NSString *sessionId;
-@property(strong,nonatomic,readwrite) RACCompoundDisposable *subscriptionDisposables;
+@property (strong, nonatomic, readwrite) NSString *sessionId;
+@property (strong, nonatomic, readwrite) RACCompoundDisposable *subscriptionDisposables;
 @property (strong, nonatomic, readwrite) SRWebSocket *webSocket;
-@property(assign,nonatomic,readwrite) KMSSessionState state;
+@property (assign, nonatomic, readwrite) KMSSessionState state;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidReceiveMessageSubject;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidOpenSubject;
 @property (strong, nonatomic, readwrite) RACSubject *websocketDidCloseSubject;
@@ -149,7 +149,6 @@
                     {
                         [subscriber sendError:responseMessageError];
                     }
-                    
                 }
             }];
             RACDisposable *webSocketDidFailWithErrorSignalDisposable =
@@ -191,7 +190,6 @@
             RACCompoundDisposable *signalDisposable = [RACCompoundDisposable compoundDisposable];
             RACDisposable *webSocketDidCloseSignalDisposable =
             [webSocketDidCloseSignal subscribeNext:^(RACTuple *args) {
-                
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
             }];
@@ -276,21 +274,22 @@
 - (void)sessionDidFailWithError:(NSError *)error
 {
     [_connectionMonitor stop];
-    [self disposeWebsocket];
     [self setState:KMSSessioStateClosed];
     
     if ([_websocketDidFailWithErrorSubject subscribersCount] > 0)
     {
-        [_websocketDidFailWithErrorSubject sendNext:RACTuplePack(webSocket, error)];
+        [_websocketDidFailWithErrorSubject sendNext:RACTuplePack(_webSocket, error)];
     }
     else
     {
         [_websocketDidFailWithErrorExternalSubject sendNext:error];
     }
+    [self disposeWebsocket];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
 {
+    [_connectionMonitor stop];
     [self disposeWebsocket];
     [self setState:KMSSessioStateClosed];
     [_websocketDidCloseSubject sendNext:RACTuplePack(webSocket, @(code), reason, @(wasClean))];
