@@ -57,8 +57,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     double secondsToFire = _timeInterval;
-    
-    _timer = CreateDispatchTimer(secondsToFire, queue, block);
+    _timer = CreateDispatchTimer(secondsToFire, queue, ^{
+        dispatch_async(dispatch_get_main_queue(), block);
+    });
 }
 
 - (void)cancelTimer
