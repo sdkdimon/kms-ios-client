@@ -5,7 +5,7 @@ use_frameworks!
 
 def shared_pods
    pod 'SocketRocket', '0.5.1'
-   pod 'ReactiveObjC', '3.0.0'
+   pod 'ReactiveObjC', '~> 3.0'
    pod 'MantleNullValuesOmit', '0.0.2'
    pod 'Mantle', '2.1.0'
 end
