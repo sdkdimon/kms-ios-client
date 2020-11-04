@@ -10,8 +10,8 @@
 
 #import "NSDictionary+MTLJSONKeyPath.h"
 
-#import <Mantle/EXTRuntimeExtensions.h>
-#import <Mantle/EXTScope.h>
+#import "MTLEXTRuntimeExtensions.h"
+#import "MTLEXTScope.h"
 #import "MTLJSONAdapter.h"
 #import "MTLModel.h"
 #import "MTLTransformerErrorHandling.h"
@@ -279,6 +279,17 @@ NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapterThrownE
 
 			return [otherAdapter modelFromJSONDictionary:JSONDictionary error:error];
 		}
+	}
+
+	if (JSONDictionary == nil || ![JSONDictionary isKindOfClass:NSDictionary.class]) {
+		if (error != NULL) {
+			NSDictionary *userInfo = @{
+				NSLocalizedDescriptionKey: NSLocalizedString(@"Missing JSON dictionary", @""),
+				NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:NSLocalizedString(@"%@ could not be created because an invalid JSON dictionary was provided: %@", @""), NSStringFromClass(self.modelClass), JSONDictionary.class],
+			};
+			*error = [NSError errorWithDomain:MTLJSONAdapterErrorDomain code:MTLJSONAdapterErrorInvalidJSONDictionary userInfo:userInfo];
+		}
+		return nil;
 	}
 
 	NSMutableDictionary *dictionaryValue = [[NSMutableDictionary alloc] initWithCapacity:JSONDictionary.count];

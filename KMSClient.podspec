@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = 'KMSClient'
   s.dependency 'SocketRocket', '0.5.1'
-  s.dependency 'MantleNullValuesOmit', '0.0.2'
-  s.dependency 'Mantle', '2.1.0'
-  s.dependency 'ReactiveObjC', '~>3.0'
+  s.dependency 'MantleNullValuesOmit'
+  s.dependency 'Mantle', '~> 2.1'
+  s.dependency 'ReactiveObjC', '~> 3.0'
   s.source_files = 'KMSClient/KMSClient/*.{h,m}'
 
   s.subspec 'ModelLayer' do |ss|

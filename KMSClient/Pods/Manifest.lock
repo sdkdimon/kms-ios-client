@@ -1,22 +1,22 @@
 PODS:
-  - Mantle (2.1.0):
-    - Mantle/extobjc (= 2.1.0)
-  - Mantle/extobjc (2.1.0)
-  - MantleNullValuesOmit (0.0.2):
-    - Mantle (= 2.1.0)
+  - Mantle (2.1.6):
+    - Mantle/extobjc (= 2.1.6)
+  - Mantle/extobjc (2.1.6)
+  - MantleNullValuesOmit (0.0.4):
+    - Mantle (~> 2.1)
   - ReactiveObjC (3.1.1)
   - SocketRocket (0.5.1)
   - WebRTC (61.5.19063)
 
 DEPENDENCIES:
-  - Mantle (= 2.1.0)
-  - MantleNullValuesOmit (= 0.0.2)
+  - Mantle (~> 2.1)
+  - MantleNullValuesOmit (= 0.0.4)
   - ReactiveObjC (~> 3.0)
   - SocketRocket (= 0.5.1)
   - WebRTC (= 61.5.19063)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Mantle
     - MantleNullValuesOmit
     - ReactiveObjC
@@ -24,12 +24,12 @@ SPEC REPOS:
     - WebRTC
 
 SPEC CHECKSUMS:
-  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
-  MantleNullValuesOmit: 620999256d7aee9a7e2c411d5e2cad01ef4f778d
+  Mantle: 4c0ed6ce47c96eccc4dc3bb071deb3def0e2c3be
+  MantleNullValuesOmit: ca505bcc2a7dea23461739a8e0fa4639467ddbeb
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   WebRTC: 141474ba648e0b940a70696c183451b4a3b2b10f
 
-PODFILE CHECKSUM: d1c1318af2e4fd6d1b7927481400d9481608d613
+PODFILE CHECKSUM: 24dcaded11ce3aaf1b683c25f955e753cce13d90
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.10.0

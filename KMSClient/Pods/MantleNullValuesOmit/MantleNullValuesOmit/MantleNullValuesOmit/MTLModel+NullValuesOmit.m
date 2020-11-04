@@ -21,33 +21,36 @@
 //  THE SOFTWARE.
 
 #import "MTLModel+NullValuesOmit.h"
+
 #import <objc/runtime.h>
 
 static void *ASSOCIATION_KEY_OMITNULLVALUES = &ASSOCIATION_KEY_OMITNULLVALUES;
+static IMP __Original_Init_IMP;
 
 @implementation MTLModel (NullValuesOmit)
 
-
-+ (void)load{
-    Method method = class_getInstanceMethod(self, @selector(init));
-    Method override_Method = class_getInstanceMethod(self, @selector(override_init));
-    method_exchangeImplementations(method, override_Method);
+id __Swizzle_Init(id self, SEL _cmd)
+{
+    MTLModel *(* __original_Init_IMP)(id, SEL, ...) = (MTLModel *(*)(id, SEL, ...))__Original_Init_IMP;
+    MTLModel *instance = __original_Init_IMP(self, _cmd);
+    instance.omitNullValues = YES;
+    return instance;
 }
 
-- (instancetype)override_init{
-    [self setOmitNullValues:YES];
-    return [self override_init];
++ (void)load
+{
+    Method initMethod = class_getInstanceMethod(self, @selector(init));
+    __Original_Init_IMP = method_setImplementation(initMethod, (IMP)__Swizzle_Init);
 }
 
-
-- (void)setOmitNullValues:(BOOL)omitNullValues{
+- (void)setOmitNullValues:(BOOL)omitNullValues
+{
     objc_setAssociatedObject(self, &ASSOCIATION_KEY_OMITNULLVALUES, @(omitNullValues), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)isOmitNullValues{
+- (BOOL)isOmitNullValues
+{
     return [objc_getAssociatedObject(self, &ASSOCIATION_KEY_OMITNULLVALUES) boolValue];
 }
-
-
 
 @end
