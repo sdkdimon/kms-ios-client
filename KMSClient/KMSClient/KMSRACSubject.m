@@ -8,9 +8,9 @@
 
 #import "KMSRACSubject.h"
 
-#import <ReactiveObjC/RACEXTScope.h>
-#import <ReactiveObjC/RACCompoundDisposable.h>
-#import <ReactiveObjC/RACPassthroughSubscriber.h>
+#import <RACObjC/RACEXTScope.h>
+#import <RACObjC/RACCompoundDisposable.h>
+#import <RACObjC/RACPassthroughSubscriber.h>
 
 @interface KMSRACSubject ()
 

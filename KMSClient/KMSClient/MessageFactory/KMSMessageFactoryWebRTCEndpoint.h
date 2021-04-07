@@ -19,8 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "KMSRequestMessageFactory.h"
-#import "KMSEventType.h"
+#import <KMSClient/KMSRequestMessageFactory.h>
+#import <KMSClient/KMSEventType.h>
+
 @class KMSICECandidate;
 
 @interface KMSMessageFactoryWebRTCEndpoint : KMSRequestMessageFactory

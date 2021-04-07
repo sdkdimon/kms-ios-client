@@ -20,7 +20,9 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "KMSMethod.h"
+
+#import <KMSClient/KMSMethod.h>
+
 @class KMSMessageParams;
 @class KMSRequestMessage;
 @class KMSRequestMessageFactory;

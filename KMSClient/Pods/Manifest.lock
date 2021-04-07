@@ -4,32 +4,37 @@ PODS:
   - Mantle/extobjc (2.1.6)
   - MantleNullValuesOmit (0.0.4):
     - Mantle (~> 2.1)
-  - ReactiveObjC (3.1.1)
-  - SocketRocket (0.5.1)
+  - RACObjC (3.2.0):
+    - RACObjC/Core (= 3.2.0)
+    - RACObjC/UI (= 3.2.0)
+  - RACObjC/Core (3.2.0)
+  - RACObjC/UI (3.2.0):
+    - RACObjC/Core
   - WebRTC (61.5.19063)
+  - WebSocketRocket (0.5.2)
 
 DEPENDENCIES:
   - Mantle (~> 2.1)
-  - MantleNullValuesOmit (= 0.0.4)
-  - ReactiveObjC (~> 3.0)
-  - SocketRocket (= 0.5.1)
+  - MantleNullValuesOmit
+  - RACObjC (= 3.2.0)
   - WebRTC (= 61.5.19063)
+  - WebSocketRocket
 
 SPEC REPOS:
   trunk:
     - Mantle
     - MantleNullValuesOmit
-    - ReactiveObjC
-    - SocketRocket
+    - RACObjC
     - WebRTC
+    - WebSocketRocket
 
 SPEC CHECKSUMS:
   Mantle: 4c0ed6ce47c96eccc4dc3bb071deb3def0e2c3be
   MantleNullValuesOmit: ca505bcc2a7dea23461739a8e0fa4639467ddbeb
-  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  RACObjC: 46c89a4f469107e5606795239a3bced35366ac6f
   WebRTC: 141474ba648e0b940a70696c183451b4a3b2b10f
+  WebSocketRocket: 7a05963f86cffd3149d7624590aa902901745a74
 
-PODFILE CHECKSUM: 24dcaded11ce3aaf1b683c25f955e753cce13d90
+PODFILE CHECKSUM: 892aa097fa6b66da318f0e309a513611c3b627ee
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

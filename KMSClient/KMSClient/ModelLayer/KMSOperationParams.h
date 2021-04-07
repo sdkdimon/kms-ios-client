@@ -21,7 +21,7 @@
 
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
-#import "KMSICECandidate.h"
+#import <KMSClient/KMSICECandidate.h>
 
 @interface KMSOperationParams : MTLModel <MTLJSONSerializing>
 

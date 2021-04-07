@@ -177,16 +177,16 @@ code_sign_if_enabled() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RACObjC/RACObjC.framework"
   install_framework "${PODS_ROOT}/WebRTC/WebRTC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WebSocketRocket/WebSocketRocket.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RACObjC/RACObjC.framework"
   install_framework "${PODS_ROOT}/WebRTC/WebRTC.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WebSocketRocket/WebSocketRocket.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

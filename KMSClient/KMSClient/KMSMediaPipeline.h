@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <RACObjC/RACObjC.h>
 
 @class RACSignal;
 @class KMSSession;

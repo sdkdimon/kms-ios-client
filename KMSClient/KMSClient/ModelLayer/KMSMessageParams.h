@@ -21,11 +21,11 @@
 
 #import <Mantle/Mantle.h>
 
-#import "KMSCreationType.h"
-#import "KMSConstructorParams.h"
-#import "KMSInvocationOperation.h"
-#import "KMSOperationParams.h"
-#import "KMSEvent.h"
+#import <KMSClient/KMSCreationType.h>
+#import <KMSClient/KMSConstructorParams.h>
+#import <KMSClient/KMSInvocationOperation.h>
+#import <KMSClient/KMSOperationParams.h>
+#import <KMSClient/KMSEvent.h>
 
 @interface KMSMessageParams : MTLModel <MTLJSONSerializing>
 @property(strong,nonatomic,readwrite) NSString *sessionId;

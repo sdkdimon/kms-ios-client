@@ -21,7 +21,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <RACObjC/RACObjC.h>
 
 @interface AppDelegate ()
 

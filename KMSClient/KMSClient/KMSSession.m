@@ -21,7 +21,7 @@
 
 #import "KMSSession.h"
 
-#import <SocketRocket/SRWebSocket.h>
+#import <WebSocketRocket/SRWebSocket.h>
 #import "KMSResponseMessage.h"
 #import "KMSRequestMessage.h"
 #import "KMSLog.h"
@@ -161,7 +161,9 @@
             [signalDisposable addDisposable:webSocketDidFailWithErrorSignalDisposable];
             
             NSData *messageData = [self transformRequestMessage:message];
-            [[self webSocket] send:messageData];
+            NSError *err;
+            [[self webSocket] sendDataNoCopy:messageData error:&err];
+            if (err != nil) {[subscriber sendError:err];}
             
             return signalDisposable;
         }
@@ -302,7 +304,7 @@
 
 - (void)sendPing:(NSData *)data
 {
-    [_webSocket sendPing:data];
+    [_webSocket sendPing:data error:nil];
 }
 
 - (void)didFailReceivePong

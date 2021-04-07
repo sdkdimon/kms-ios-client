@@ -20,7 +20,8 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "KMSLogger.h"
+
+#import <KMSClient/KMSLogger.h>
 
 #ifdef DEBUG
 #   define KMSLog(lvl,fmt ...) [[KMSLog sharedInstance] logLevel:lvl format:fmt]

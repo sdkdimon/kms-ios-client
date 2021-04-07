@@ -22,7 +22,6 @@ FOUNDATION_EXPORT const unsigned char KMSClientVersionString[];
 #import <KMSClient/KMSWebRTCEndpoint.h>
 #import <KMSClient/KMSMessage.h>
 #import <KMSClient/KMSMessageParams.h>
-
 #import <KMSClient/KMSConstructorParams.h>
 #import <KMSClient/KMSElementConnection.h>
 #import <KMSClient/KMSEvent.h>
@@ -43,3 +42,4 @@ FOUNDATION_EXPORT const unsigned char KMSClientVersionString[];
 #import <KMSClient/KMSRequestMessageFactory.h>
 #import <KMSClient/KMSLogger.h>
 #import <KMSClient/KMSLog.h>
+#import <KMSClient/KMSSessionConnectionMonitor.h>

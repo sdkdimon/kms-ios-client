@@ -43,7 +43,7 @@
 #import <KMSClient/KMSMessageFactoryWebRTCEndpoint.h>
 #import <KMSClient/KMSICECandidate.h>
 #import <KMSClient/KMSEvent.h>
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <RACObjC/RACObjCUI.h>
 
 #import <KMSClient/KMSLog.h>
 
@@ -475,7 +475,7 @@ enum{
 - (void)peerConnection:(RTCPeerConnection *)peerConnection
 didChangeSignalingState:(RTCSignalingState)stateChanged{
    [RTCDispatcher dispatchAsyncOnType:RTCDispatcherTypeMain block:^{
-        NSLog(@"%d",stateChanged);
+        NSLog(@"%@",@(stateChanged));
         if (stateChanged == RTCSignalingStateClosed) {
             [self peerConnectionDidClose];
         }
@@ -488,7 +488,7 @@ didChangeSignalingState:(RTCSignalingState)stateChanged{
           didAddStream:(RTCMediaStream *)stream{
    [RTCDispatcher dispatchAsyncOnType:RTCDispatcherTypeMain block:^{
         NSLog(@"ADDED STREAM!!! with source %@", [[[stream videoTracks] firstObject] source]);
-        [_callViewController setRemoteMediaStream:stream];
+        [self->_callViewController setRemoteMediaStream:stream];
     }];
     
 }

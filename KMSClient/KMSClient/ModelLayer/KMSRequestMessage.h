@@ -19,9 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "KMSMessage.h"
-#import "KMSMethod.h"
-#import "KMSMessageParams.h"
+#import <KMSClient/KMSMessage.h>
+#import <KMSClient/KMSMethod.h>
+#import <KMSClient/KMSMessageParams.h>
 
 @interface KMSRequestMessage : KMSMessage{
     @protected KMSMethod _method;

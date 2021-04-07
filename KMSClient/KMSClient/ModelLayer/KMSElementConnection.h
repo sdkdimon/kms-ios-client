@@ -21,7 +21,7 @@
 
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
-#import "KMSMediaType.h"
+#import <KMSClient/KMSMediaType.h>
 
 @interface KMSElementConnection : MTLModel <MTLJSONSerializing>
 

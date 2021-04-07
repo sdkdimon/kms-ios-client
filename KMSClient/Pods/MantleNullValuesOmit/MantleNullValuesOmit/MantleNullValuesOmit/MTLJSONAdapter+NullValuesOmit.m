@@ -47,7 +47,7 @@ static IMP __Original_modelFromJSONDictionary_IMP;
 
 NSDictionary *__Swizzle_JSONDictionaryFromModel(id self, SEL _cmd, id <MTLJSONSerializing> model, NSError *__autoreleasing *error)
 {
-    NSDictionary *(* __original_JSONDictionaryFromModel_IMP)(id, SEL, ...) = (NSDictionary *(*)(id, SEL, ...))__Original_JSONDictionaryFromModel_IMP;
+    NSDictionary *(* __original_JSONDictionaryFromModel_IMP)(id, SEL, id <MTLJSONSerializing>, NSError *__autoreleasing *) = (NSDictionary *(*)(id, SEL, id <MTLJSONSerializing>, NSError *__autoreleasing *))__Original_JSONDictionaryFromModel_IMP;
     NSMutableDictionary *JSONDictionary = [__original_JSONDictionaryFromModel_IMP(self, _cmd, model, error) mtl_mutableCopyIfNeeded];
     if ([model respondsToSelector:@selector(isOmitNullValues)] && [(MTLModel *)model isOmitNullValues])
     {
@@ -64,7 +64,7 @@ NSDictionary *__Swizzle_JSONDictionaryFromModel(id self, SEL _cmd, id <MTLJSONSe
 
 id __Swizzle_modelFromJSONDictionary(id self, SEL _cmd, NSDictionary *JSONDictionary, NSError *__autoreleasing *error)
 {
-    id (* __original_modelFromJSONDictionary_IMP)(id, SEL, ...) = (id (*)(id, SEL, ...))__Original_modelFromJSONDictionary_IMP;
+    id (* __original_modelFromJSONDictionary_IMP)(id, SEL, NSDictionary *, NSError *__autoreleasing *) = (id (*)(id, SEL, NSDictionary *, NSError *__autoreleasing *))__Original_modelFromJSONDictionary_IMP;
     NSMutableDictionary *JSONDictionaryMutable = [JSONDictionary mutableCopy];
     NSMutableArray *keysToRemove = [[NSMutableArray alloc] init];
     for (NSString *key in JSONDictionaryMutable)

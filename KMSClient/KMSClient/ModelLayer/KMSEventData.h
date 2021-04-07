@@ -21,10 +21,10 @@
 
 #import <Mantle/Mantle.h>
 
-#import "KMSEventType.h"
-#import "KMSElementConnection.h"
-#import "KMSICECandidate.h"
-#import "KMSMediaState.h"
+#import <KMSClient/KMSEventType.h>
+#import <KMSClient/KMSElementConnection.h>
+#import <KMSClient/KMSICECandidate.h>
+#import <KMSClient/KMSMediaState.h>
 
 @interface KMSEventData : MTLModel <MTLJSONSerializing>
 @property(assign,nonatomic,readwrite) KMSEventType type;

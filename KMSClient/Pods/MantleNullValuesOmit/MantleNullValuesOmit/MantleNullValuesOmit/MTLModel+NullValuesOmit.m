@@ -31,7 +31,7 @@ static IMP __Original_Init_IMP;
 
 id __Swizzle_Init(id self, SEL _cmd)
 {
-    MTLModel *(* __original_Init_IMP)(id, SEL, ...) = (MTLModel *(*)(id, SEL, ...))__Original_Init_IMP;
+    MTLModel *(* __original_Init_IMP)(id, SEL) = (MTLModel *(*)(id, SEL))__Original_Init_IMP;
     MTLModel *instance = __original_Init_IMP(self, _cmd);
     instance.omitNullValues = YES;
     return instance;

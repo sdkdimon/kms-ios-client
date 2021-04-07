@@ -21,7 +21,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <ReactiveObjC/ReactiveObjC.h>
+#import <RACObjC/RACObjC.h>
 
 @class KMSRequestMessage;
 @class KMSSessionConnectionMonitor;

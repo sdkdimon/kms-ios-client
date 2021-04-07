@@ -19,8 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "KMSMessage.h"
-#import "KMSResponseMessageResult.h"
+#import <KMSClient/KMSMessage.h>
+
+#import <KMSClient/KMSResponseMessageResult.h>
 
 @interface KMSResponseMessage : KMSMessage
 /**

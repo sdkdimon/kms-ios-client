@@ -19,9 +19,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "MTLModel.h"
-#import "KMSEventType.h"
-#import "KMSEventData.h"
+#import <Mantle/Mantle.h>
+
+#import <KMSClient/KMSEventType.h>
+#import <KMSClient/KMSEventData.h>
 
 
 @interface KMSEvent : MTLModel <MTLJSONSerializing>
