@@ -27,6 +27,8 @@
 #import <KMSClient/KMSOperationParams.h>
 #import <KMSClient/KMSEvent.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSMessageParams : MTLModel <MTLJSONSerializing>
 @property(strong,nonatomic,readwrite) NSString *sessionId;
 @end
@@ -54,7 +56,7 @@
 
 @property(strong,nonatomic,readwrite) NSString *object;
 @property(assign,nonatomic,readwrite) KMSInvocationOperation operation;
-@property(strong,nonatomic,readwrite) KMSOperationParams *operationParams;
+@property(strong,nonatomic,readwrite, nullable) KMSOperationParams *operationParams;
 
 
 @end
@@ -96,4 +98,6 @@
 @property(strong,nonatomic,readwrite) NSString *object;
 @property(strong,nonatomic,readwrite) NSString *subscription;
 @end
+
+NS_ASSUME_NONNULL_END
 

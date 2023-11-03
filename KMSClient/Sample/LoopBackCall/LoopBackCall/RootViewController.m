@@ -43,7 +43,7 @@
 #import <KMSClient/KMSMessageFactoryWebRTCEndpoint.h>
 #import <KMSClient/KMSICECandidate.h>
 #import <KMSClient/KMSEvent.h>
-#import <RACObjC/RACObjCUI.h>
+#import <RACObjC_UI/RACObjC_UI.h>
 
 #import <KMSClient/KMSLog.h>
 

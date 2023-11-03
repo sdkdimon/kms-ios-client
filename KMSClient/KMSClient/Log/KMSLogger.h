@@ -21,16 +21,20 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, KMSLogMessageLevel) {
     KMSLogMessageLevelNone = 0,
     KMSLogMessageLevelInfo,
     KMSLogMessageLevelVerbose,
     KMSLogMessageLevelError,
     KMSLogMessageLevelWarning
-}KMSLogMessageLevel;
+};
+
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol KMSLogger <NSObject>
 
 - (void)logMessage:(NSString *)message level:(KMSLogMessageLevel)level;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -23,6 +23,8 @@
 #import <Mantle/MTLJSONAdapter.h>
 #import <KMSClient/KMSICECandidate.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSOperationParams : MTLModel <MTLJSONSerializing>
 
 @end
@@ -49,3 +51,5 @@
 
 @property(strong,nonatomic,readwrite) NSString *offer;
 @end
+
+NS_ASSUME_NONNULL_END

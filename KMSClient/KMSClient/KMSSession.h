@@ -26,12 +26,14 @@
 @class KMSRequestMessage;
 @class KMSSessionConnectionMonitor;
 
-typedef enum {
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, KMSSessionState) {
     KMSSessioStateClosed = 0,
     KMSSessioStateClosing,
     KMSSessioStateOpen,
     KMSSessioStateOpening
-}KMSSessionState;
+};
 
 @interface KMSSession : NSObject
 
@@ -49,3 +51,5 @@ typedef enum {
 - (RACSignal *)closeSignal;
 
 @end
+
+NS_ASSUME_NONNULL_END

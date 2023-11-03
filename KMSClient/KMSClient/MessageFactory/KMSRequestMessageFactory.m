@@ -21,7 +21,7 @@
 
 #import "KMSRequestMessageFactory.h"
 #import "KMSRequestMessage.h"
-#import "UUID.h"
+#import "KMSUUID.h"
 
 static NSString * const JSONRPC = @"2.0";
 
@@ -55,7 +55,7 @@ static NSString * const JSONRPC = @"2.0";
 - (KMSRequestMessage *)messageWithParams:(KMSMessageParams *)params method:(KMSMethod)method{
     KMSRequestMessage *message = [KMSRequestMessage messageWithMethod:method];
     [message setJsonrpc:JSONRPC];
-    [message setIdentifier:[UUID uuid]];
+    [message setIdentifier:[KMSUUID uuid]];
     [message setParams:params];
     [self authorizeMessage:message];
     return message;

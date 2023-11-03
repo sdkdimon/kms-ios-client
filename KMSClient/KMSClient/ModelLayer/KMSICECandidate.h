@@ -22,9 +22,13 @@
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSICECandidate : MTLModel <MTLJSONSerializing>
 
 @property(strong,nonatomic,readwrite) NSString *candidate;
 @property(strong,nonatomic,readwrite) NSString *sdpMid;
 @property(assign,nonatomic,readwrite) NSInteger sdpMLineIndex;
 @end
+
+NS_ASSUME_NONNULL_END

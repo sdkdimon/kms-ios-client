@@ -21,9 +21,13 @@
 
 #import <KMSClient/KMSRequestMessageFactory.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSMessageFactoryMediaPipeline : KMSRequestMessageFactory
 
 - (KMSRequestMessage *)create;
 - (KMSRequestMessage *)disposeObject:(NSString *)object;
 
 @end
+
+NS_ASSUME_NONNULL_END

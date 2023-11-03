@@ -6,8 +6,8 @@
 //  Copyright © 2016 CSLtd. All rights reserved.
 //
 
-typedef enum{
+typedef NS_ENUM(NSInteger, KMSMediaState) {
     KMSMediaStateNone = 0,
     KMSMediaStateConnected,
     KMSMediaStateDisconnected
-}KMSMediaState;
+};

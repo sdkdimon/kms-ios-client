@@ -9,6 +9,12 @@
 // of patent rights can be found in the PATENTS file in the same directory.
 //
 
+#import <Foundation/Foundation.h>
+
+FOUNDATION_EXPORT double WebSocketRocketVersionNumber;
+
+FOUNDATION_EXPORT const unsigned char WebSocketRocketVersionString[];
+
 #import <WebSocketRocket/NSRunLoop+SRWebSocket.h>
 #import <WebSocketRocket/NSURLRequest+SRWebSocket.h>
 #import <WebSocketRocket/SRSecurityPolicy.h>

@@ -19,9 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "UUID.h"
+#import "KMSUUID.h"
 
-@implementation UUID
+@implementation KMSUUID
 + (NSString *)uuid
 {
     //also known as uuid/universallyUniqueIdentifier

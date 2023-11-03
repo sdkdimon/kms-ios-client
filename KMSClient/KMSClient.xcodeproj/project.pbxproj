@@ -32,11 +32,11 @@
 		8A0A875B1D99714E0018D08E /* KMSMediaState.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44451D99520C0037DD9A /* KMSMediaState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A875C1D9971520018D08E /* KMSMediaType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44461D99520C0037DD9A /* KMSMediaType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A875D1D9971540018D08E /* KMSMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44471D99520C0037DD9A /* KMSMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A0A875E1D9971600018D08E /* UUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44281D99520C0037DD9A /* UUID.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8A0A875E1D9971600018D08E /* KMSUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44281D99520C0037DD9A /* KMSUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A87601D9971840018D08E /* KMSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44521D99520C0037DD9A /* KMSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A87611D9973500018D08E /* KMSMessageFactoryMediaPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44491D99520C0037DD9A /* KMSMessageFactoryMediaPipeline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A0A87621D9980720018D08E /* KMSLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACF44501D99520C0037DD9A /* KMSLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8ACF445A1D99520C0037DD9A /* UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44291D99520C0037DD9A /* UUID.m */; };
+		8ACF445A1D99520C0037DD9A /* KMSUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44291D99520C0037DD9A /* KMSUUID.m */; };
 		8ACF445C1D99520C0037DD9A /* KMSConstructorParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF442C1D99520C0037DD9A /* KMSConstructorParams.m */; };
 		8ACF445E1D99520C0037DD9A /* KMSElementConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF442E1D99520C0037DD9A /* KMSElementConnection.m */; };
 		8ACF44601D99520C0037DD9A /* KMSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF44301D99520C0037DD9A /* KMSEvent.m */; };
@@ -68,8 +68,8 @@
 		8ACF441C1D9951D10037DD9A /* KMSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACF441F1D9951D10037DD9A /* KMSClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMSClient.h; sourceTree = "<group>"; };
 		8ACF44201D9951D10037DD9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8ACF44281D99520C0037DD9A /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUID.h; sourceTree = "<group>"; };
-		8ACF44291D99520C0037DD9A /* UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUID.m; sourceTree = "<group>"; };
+		8ACF44281D99520C0037DD9A /* KMSUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSUUID.h; sourceTree = "<group>"; };
+		8ACF44291D99520C0037DD9A /* KMSUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSUUID.m; sourceTree = "<group>"; };
 		8ACF442B1D99520C0037DD9A /* KMSConstructorParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSConstructorParams.h; sourceTree = "<group>"; };
 		8ACF442C1D99520C0037DD9A /* KMSConstructorParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSConstructorParams.m; sourceTree = "<group>"; };
 		8ACF442D1D99520C0037DD9A /* KMSElementConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSElementConnection.h; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 		8ACF44271D99520C0037DD9A /* UUID */ = {
 			isa = PBXGroup;
 			children = (
-				8ACF44281D99520C0037DD9A /* UUID.h */,
-				8ACF44291D99520C0037DD9A /* UUID.m */,
+				8ACF44281D99520C0037DD9A /* KMSUUID.h */,
+				8ACF44291D99520C0037DD9A /* KMSUUID.m */,
 			);
 			path = UUID;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 				8A0A874A1D99711A0018D08E /* KMSWebRTCEndpoint.h in Headers */,
 				8A0A87471D996FAE0018D08E /* KMSClient.h in Headers */,
 				8A0A87481D99706E0018D08E /* KMSSession.h in Headers */,
-				8A0A875E1D9971600018D08E /* UUID.h in Headers */,
+				8A0A875E1D9971600018D08E /* KMSUUID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +410,7 @@
 				8ACF44641D99520C0037DD9A /* KMSICECandidate.m in Sources */,
 				8ACF44821D99520C0037DD9A /* KMSSession.m in Sources */,
 				8ACF44601D99520C0037DD9A /* KMSEvent.m in Sources */,
-				8ACF445A1D99520C0037DD9A /* UUID.m in Sources */,
+				8ACF445A1D99520C0037DD9A /* KMSUUID.m in Sources */,
 				8ACF44661D99520C0037DD9A /* KMSMessage.m in Sources */,
 				8ACF447A1D99520C0037DD9A /* KMSMessageFactoryWebRTCEndpoint.m in Sources */,
 				8ACF446C1D99520C0037DD9A /* KMSRequestMessage.m in Sources */,
@@ -473,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -529,7 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,7 +554,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KMSClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.KMSClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,7 +577,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KMSClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sdkdimon.KMSClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";

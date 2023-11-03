@@ -27,6 +27,8 @@
 @class KMSRequestMessage;
 @class KMSRequestMessageFactory;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol KMSMessageFactoryDataSource <NSObject>
 @required
 - (NSString *)messageFactory:(KMSRequestMessageFactory *)messageFactory sessionIdForMessage:(KMSRequestMessage *)message;
@@ -39,3 +41,5 @@
 - (KMSRequestMessage *)messageWithParams:(KMSMessageParams *)params method:(KMSMethod)method;
 
 @end
+
+NS_ASSUME_NONNULL_END

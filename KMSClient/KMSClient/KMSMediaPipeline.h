@@ -25,10 +25,12 @@
 @class RACSignal;
 @class KMSSession;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSMediaPipeline : NSObject 
 
-+ (instancetype)pipelineWithKurentoSession:(KMSSession *)kurentoSession identifier:(NSString *)identifier;
-- (instancetype)initWithKurentoSession:(KMSSession *)kurentoSession identifier:(NSString *)identifier;
++ (instancetype)pipelineWithKurentoSession:(KMSSession *)kurentoSession identifier:(NSString  * )identifier;
+- (instancetype)initWithKurentoSession:(KMSSession *)kurentoSession identifier:(NSString * _Nullable)identifier;
 
 + (instancetype)pipelineWithKurentoSession:(KMSSession *)kurentoSession;
 - (instancetype)initWithKurentoSession:(KMSSession *)kurentoSession;
@@ -50,3 +52,5 @@
 #endif /* DOXYGEN_SHOULD_SKIP_THIS */
 
 @end
+
+NS_ASSUME_NONNULL_END

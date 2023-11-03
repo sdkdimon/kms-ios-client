@@ -19,9 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-typedef enum{
+typedef NS_ENUM(NSInteger, KMSMediaType) {
    KMSMediaTypeNone = 0,
    KMSMediaTypeAudio,
    KMSMediaTypeVideo,
    KMSMediaTypeData
-}KMSMediaType;
+};

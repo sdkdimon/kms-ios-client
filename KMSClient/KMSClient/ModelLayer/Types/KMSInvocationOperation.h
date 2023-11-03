@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 
 
-typedef enum {
+typedef NS_ENUM(NSInteger, KMSInvocationOperation) {
     KMSInvocationOperationNone = 0,
     KMSInvocationOperationConnect,
     KMSInvocationOperationDisconnect,
@@ -29,4 +29,4 @@ typedef enum {
     KMSInvocationOperationAddICECandidate,
     KMSInvocationOperationGetSourceConnections,
     KMSInvocationOperationGetSinkConnections
-}KMSInvocationOperation;
+};

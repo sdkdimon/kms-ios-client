@@ -43,3 +43,4 @@ FOUNDATION_EXPORT const unsigned char KMSClientVersionString[];
 #import <KMSClient/KMSLogger.h>
 #import <KMSClient/KMSLog.h>
 #import <KMSClient/KMSSessionConnectionMonitor.h>
+#import <KMSClient/KMSUUID.h>

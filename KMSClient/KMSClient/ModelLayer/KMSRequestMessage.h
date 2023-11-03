@@ -23,6 +23,8 @@
 #import <KMSClient/KMSMethod.h>
 #import <KMSClient/KMSMessageParams.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSRequestMessage : KMSMessage{
     @protected KMSMethod _method;
 }
@@ -107,3 +109,4 @@
 @property(strong,nonatomic,readwrite) KMSMessageParamsEvent *params;
 @end
 
+NS_ASSUME_NONNULL_END

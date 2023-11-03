@@ -22,6 +22,8 @@
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSResponseMessageResult : MTLModel <MTLJSONSerializing>
 
 @property(strong,nonatomic,readwrite) id value;
@@ -29,3 +31,5 @@
 
 
 @end
+
+NS_ASSUME_NONNULL_END

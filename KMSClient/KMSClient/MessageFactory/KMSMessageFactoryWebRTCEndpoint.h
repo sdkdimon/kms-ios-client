@@ -24,6 +24,8 @@
 
 @class KMSICECandidate;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSMessageFactoryWebRTCEndpoint : KMSRequestMessageFactory
 
 - (KMSRequestMessage *)createWithMediaPipeline:(NSString *)mediaPipeline;
@@ -39,3 +41,5 @@
 - (KMSRequestMessage *)unsubscribeEndpoint:(NSString *)endpoint subscription:(NSString *)subscription;
 
 @end
+
+NS_ASSUME_NONNULL_END

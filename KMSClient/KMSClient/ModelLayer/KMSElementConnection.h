@@ -23,6 +23,8 @@
 #import <Mantle/MTLJSONAdapter.h>
 #import <KMSClient/KMSMediaType.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSElementConnection : MTLModel <MTLJSONSerializing>
 
 + (NSValueTransformer *)mediaTypeJSONTransformer;
@@ -31,3 +33,5 @@
 @property(strong,nonatomic,readwrite) NSString *sink;
 @property(assign,nonatomic,readwrite) KMSMediaType mediaType;
 @end
+
+NS_ASSUME_NONNULL_END

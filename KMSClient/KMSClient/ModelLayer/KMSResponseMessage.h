@@ -23,6 +23,8 @@
 
 #import <KMSClient/KMSResponseMessageResult.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSResponseMessage : KMSMessage
 /**
  *  Response result should be handled manually depends on method type.
@@ -33,3 +35,5 @@
  */
 @property(strong,nonatomic,readwrite) NSError *error;
 @end
+
+NS_ASSUME_NONNULL_END

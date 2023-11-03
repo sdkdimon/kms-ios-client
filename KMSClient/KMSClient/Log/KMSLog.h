@@ -29,7 +29,7 @@
 #   define KMSLog(lvl,fmt ...)
 #endif
 
-
+NS_ASSUME_NONNULL_BEGIN
 
 @interface KMSLog : NSObject
 
@@ -40,3 +40,5 @@
 - (void)logLevel:(KMSLogMessageLevel)level format:(NSString *)format,...;
 
 @end
+
+NS_ASSUME_NONNULL_END

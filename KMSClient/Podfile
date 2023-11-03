@@ -1,11 +1,11 @@
 # Uncomment this line to define a global platform for your project
 workspace 'KMSClient.xcworkspace'
-platform :ios, '9.0'
+platform :ios, '12.0'
 use_frameworks!
 
 def shared_pods
    pod 'WebSocketRocket'
-   pod 'RACObjC', '3.2.0'
+   pod 'RACObjC', '~> 3.3'
    pod 'MantleNullValuesOmit'
    pod 'Mantle', '~> 2.1'
 end
@@ -13,6 +13,7 @@ end
 target :LoopBackCall do
    project 'Sample/LoopBackCall/LoopBackCall.xcodeproj'
    pod 'WebRTC', '61.5.19063'
+   pod 'RACObjC_UI', '~> 3.3'
    shared_pods
   end
 

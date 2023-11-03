@@ -59,13 +59,8 @@ extern NSString *_Nullable SRStreamNetworkServiceTypeFromURLRequestNetworkServic
         case NSURLNetworkServiceTypeResponsiveData:
         case NSURLNetworkServiceTypeAVStreaming:
         case NSURLNetworkServiceTypeResponsiveAV: return nil;
-        default:
-            if (@available(iOS 10, macOS 10.12, tvOS 10.0, watchOS 3.0, *)) {
-                if (networkServiceType == NSURLNetworkServiceTypeCallSignaling){
-                    return NSStreamNetworkServiceTypeCallSignaling;
-                }
-            }
-            return nil;
+        case NSURLNetworkServiceTypeCallSignaling: return NSStreamNetworkServiceTypeCallSignaling;
+        default: return nil;
     }
 }
 

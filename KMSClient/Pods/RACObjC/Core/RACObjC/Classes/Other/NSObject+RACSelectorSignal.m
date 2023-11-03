@@ -24,7 +24,7 @@ static NSString * const RACSignalForSelectorAliasPrefix = @"rac_alias_";
 static NSString * const RACSubclassSuffix = @"_RACSelectorSignal";
 static void *RACSubclassAssociationKey = &RACSubclassAssociationKey;
 
-static NSMutableSet *swizzledClasses() {
+static NSMutableSet *swizzledClasses(void) {
 	static NSMutableSet *set;
 	static dispatch_once_t pred;
 	

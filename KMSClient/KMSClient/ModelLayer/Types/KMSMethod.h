@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-typedef enum {
+typedef NS_ENUM(NSInteger, KMSMethod) {
     KMSMethodNone = 0,
     KMSMethodCreate,
     KMSMethodInvoke,
@@ -27,4 +27,4 @@ typedef enum {
     KMSMethodUnsubscribe,
     KMSMethodRelease,
     KMSMethodOnEvent
-}KMSMethod;
+};

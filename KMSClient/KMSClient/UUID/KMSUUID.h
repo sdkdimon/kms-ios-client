@@ -21,6 +21,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UUID : NSObject
+NS_ASSUME_NONNULL_BEGIN
+
+@interface KMSUUID : NSObject
 + (NSString *)uuid;
 @end
+
+NS_ASSUME_NONNULL_END

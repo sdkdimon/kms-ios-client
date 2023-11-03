@@ -21,6 +21,9 @@
 
 #import <Mantle/Mantle.h>
 
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  KMSMessage is a shared request/response model.
  */
@@ -38,6 +41,8 @@
 @property(strong,nonatomic,readwrite) NSString *identifier;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 
 

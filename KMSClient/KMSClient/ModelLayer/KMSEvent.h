@@ -24,6 +24,7 @@
 #import <KMSClient/KMSEventType.h>
 #import <KMSClient/KMSEventData.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface KMSEvent : MTLModel <MTLJSONSerializing>
 
@@ -52,3 +53,5 @@
 @property(strong,nonatomic,readwrite) KMSEventDataMediaStateChanged *data;
 
 @end
+
+NS_ASSUME_NONNULL_END

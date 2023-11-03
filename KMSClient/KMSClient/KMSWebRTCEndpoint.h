@@ -28,6 +28,8 @@
 @class KMSICECandidate;
 @class KMSMessageFactoryWebRTCEndpoint;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface KMSWebRTCEndpoint : NSObject 
 
 + (instancetype)endpointWithKurentoSession:(KMSSession *)kurentoSession mediaPipelineId:(NSString *)mediaPipelineId;
@@ -65,3 +67,5 @@
 
 
 @end
+
+NS_ASSUME_NONNULL_END

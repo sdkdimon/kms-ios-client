@@ -22,6 +22,8 @@
 #import <Mantle/MTLModel.h>
 #import <Mantle/MTLJSONAdapter.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 #pragma mark BaseConstructorParams
 
 @interface KMSConstructorParams : MTLModel <MTLJSONSerializing>
@@ -35,3 +37,5 @@
 @property(strong,nonatomic,readwrite) NSString *mediaPipeline;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol KMSSessionPing <NSObject>
 
 - (void)sendPing:(NSData *)data;
@@ -37,3 +39,5 @@
 - (void)stop;
 
 @end
+
+NS_ASSUME_NONNULL_END
