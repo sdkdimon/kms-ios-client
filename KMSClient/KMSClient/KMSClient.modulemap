@@ -1,0 +1,4 @@
+framework module KMSClient {
+  umbrella header "KMSClient.h"
+  export *
+}

@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## Mantle
+## DLMantle
 
 **Copyright (c) GitHub, Inc.**
 **All rights reserved.**

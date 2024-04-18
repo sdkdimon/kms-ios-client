@@ -6,8 +6,8 @@ use_frameworks!
 def shared_pods
    pod 'WebSocketRocket'
    pod 'RACObjC', '~> 3.3'
-   pod 'MantleNullValuesOmit'
-   pod 'Mantle', '~> 2.1'
+   pod 'MantleNullValuesOmit', '~> 0.0.5'
+   pod 'DLMantle', '~> 2.2'
 end
 
 target :LoopBackCall do

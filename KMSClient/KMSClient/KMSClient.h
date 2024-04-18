@@ -1,21 +1,8 @@
-//
-//  KMSClient.h
-//  KMSClient
-//
-//  Created by dimon on 26/09/2016.
-//  Copyright © 2016 dimon. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#import <UIKit/UIKit.h>
-
-//! Project version number for KMSClient.
 FOUNDATION_EXPORT double KMSClientVersionNumber;
 
-//! Project version string for KMSClient.
 FOUNDATION_EXPORT const unsigned char KMSClientVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <KMSClient/PublicHeader.h>
-
 
 #import <KMSClient/KMSSession.h>
 #import <KMSClient/KMSMediaPipeline.h>

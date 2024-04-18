@@ -176,7 +176,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DLMantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RACObjC/RACObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RACObjC_UI/RACObjC_UI.framework"
@@ -184,7 +184,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WebSocketRocket/WebSocketRocket.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DLMantle/Mantle.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MantleNullValuesOmit/MantleNullValuesOmit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RACObjC/RACObjC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RACObjC_UI/RACObjC_UI.framework"

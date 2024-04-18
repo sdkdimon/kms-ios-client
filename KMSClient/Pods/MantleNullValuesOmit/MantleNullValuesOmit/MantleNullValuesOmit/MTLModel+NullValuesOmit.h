@@ -22,8 +22,12 @@
 
 #import <Mantle/Mantle.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MTLModel (NullValuesOmit)
 
 @property (assign, nonatomic, readwrite, getter=isOmitNullValues) BOOL omitNullValues;
 
 @end
+
+NS_ASSUME_NONNULL_END
